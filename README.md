@@ -94,10 +94,9 @@ Esta documentação técnica descreve o funcionamento do sistema mobile para ges
 
 ## 5. Tecnologias e Ferramentas Utilizadas
 
-- **Plataformas**: Mobile (Android e iOS)
-- **Linguagem**: Java/Kotlin (Android), Swift (iOS)
-- **Banco de Dados**: Firebase, SQLite
-- **Ferramentas de Desenvolvimento**: Android Studio, Xcode
+- **Mobile**: Java (para a versão mobile)
+- **Web**: .NET MVC Razor (para a versão web)
+- **Desktop**: C# (para a versão desktop)
 
 ---
 
