@@ -38,12 +38,12 @@ public class tela_vendas extends AppCompatActivity implements AdapterProduto.OnI
 
         // Criando uma lista de produtos para exibir no RecyclerView
         List<Produto> listaProdutos = new ArrayList<>();
-        listaProdutos.add(new Produto("id_beterraba", R.drawable.beterraba, "Beringela", "Beringela nutritiva, ótima para saladas e sucos.", "R$ 8,00"));
+        listaProdutos.add(new Produto("id_beterraba", R.drawable.beterraba, "Beterraba", "Beterraba nutritiva, ótima para saladas e sucos.", "R$ 8,00"));
         listaProdutos.add(new Produto("id_cenoura", R.drawable.cenoura, "Cenoura", "Cenoura fresca, excelente para melhorar a visão.", "R$ 6,50"));
         listaProdutos.add(new Produto("id_tomate", R.drawable.tomate, "Tomate", "Tomate orgânico, ideal para saladas e molhos.", "R$ 4,00"));
-        listaProdutos.add(new Produto("id_beterraba", R.drawable.beterraba, "Beringela", "Beringela nutritiva, ótima para saladas e sucos.", "R$ 8,00"));
-        listaProdutos.add(new Produto("id_cenoura", R.drawable.cenoura, "Cenoura", "Cenoura fresca, excelente para melhorar a visão.", "R$ 6,50"));
-        listaProdutos.add(new Produto("id_tomate", R.drawable.tomate, "Tomate", "Tomate orgânico, ideal para saladas e molhos.", "R$ 4,00"));
+        listaProdutos.add(new Produto("id_morango", R.drawable.morango, "Morango", "Morango doce e suculento, perfeito para sobremesas.", "R$ 12,00"));
+        listaProdutos.add(new Produto("id_alface", R.drawable.alface, "Alface", "Alface fresca, ideal para saladas crocantes.", "R$ 5,00"));
+        listaProdutos.add(new Produto("id_brocolis", R.drawable.brocolis, "Brócolis", "Brócolis rico em vitaminas, ótimo para cozidos e saladas.", "R$ 7,50"));
 
         // Configurando o AdapterProduto com a lista de produtos e o listener
         AdapterProduto adapterProduto = new AdapterProduto(listaProdutos, this);
