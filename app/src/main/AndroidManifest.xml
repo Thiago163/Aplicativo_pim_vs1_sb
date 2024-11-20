@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,94 +12,82 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PIM_Mundo_Verde"
-        tools:targetApi="31">
-
+        tools:targetApi="31" >
+        <activity
+            android:name=".tela_calcular_frete"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".tela_fechamento"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_finalizar_compra"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_carrinho"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_cadastro_uso1"
             android:exported="true"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_controle_campos"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_vendas"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_esqueci_senha"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_menu_geral"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_fazendeiro"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_cadastro_uso2"
             android:exported="true"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_cadastro_uso"
             android:exported="true"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_inf_colheita"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_inf_adubo"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_inf_agua"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_home"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".tela_login"
             android:exported="false"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

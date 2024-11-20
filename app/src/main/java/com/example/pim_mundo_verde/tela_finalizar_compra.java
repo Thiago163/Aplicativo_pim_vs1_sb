@@ -62,7 +62,7 @@ public class tela_finalizar_compra extends AppCompatActivity {
         atualizarTotal();
 
         // Ação para redirecionar ao menu ou outra tela
-        Intent in = new Intent(tela_finalizar_compra.this, tela_home.class);
+        Intent in = new Intent(tela_finalizar_compra.this, tela_calcular_frete.class);
         in.putExtra("compraFinalizada", true);  // Passando o sinalizador para limpar a tela de carrinho
         startActivity(in);
     }
