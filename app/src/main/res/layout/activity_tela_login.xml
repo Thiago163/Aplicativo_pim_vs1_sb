@@ -77,7 +77,8 @@
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextSenha"
         app:layout_constraintEnd_toEndOf="@+id/editTextSenha"
-        app:srcCompat="@drawable/ic_visibility_off" />
+        app:srcCompat="@drawable/ic_visibility_off"
+        android:onClick="togglePasswordVisibility"/>
 
     <Button
         android:id="@+id/btn_Entrar2"

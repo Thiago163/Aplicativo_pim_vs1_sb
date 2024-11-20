@@ -80,10 +80,10 @@ public class tela_login extends AppCompatActivity {
 
     public void togglePasswordVisibility(View view) {
         if (isPasswordVisible) {
-            editTextSenha.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
             imgVisibility.setImageResource(R.drawable.ic_visibility_off); // Ícone de olho fechado
         } else {
-            editTextSenha.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            editTextSenha.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
             imgVisibility.setImageResource(R.drawable.ic_visibility); // Ícone de olho aberto
         }
         editTextSenha.setSelection(editTextSenha.length()); // Manter o cursor no final

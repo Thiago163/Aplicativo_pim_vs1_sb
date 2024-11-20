@@ -166,7 +166,7 @@
         android:layout_marginEnd="46dp"
         android:layout_marginBottom="290dp"
         android:background="@drawable/edit_text_border"
-        android:hint="Telefone"
+        android:hint="Telefone [Obrigatório]"
         android:ems="10"
         android:inputType="text"
         android:padding="10dp"
