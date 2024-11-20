@@ -1,0 +1,21 @@
+<resources>
+    <!-- Tema do Aplicativo -->
+    <style name="Theme.PIM_Mundo_Verde" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Cor da barra de status -->
+        <item name="android:statusBarColor">#FFFAFA</item>
+
+        <!-- Cor de fundo principal do aplicativo (ou use verde claro) -->
+        <item name="android:windowBackground">@color/verde_claro</item>
+
+        <!-- Estilo personalizado para botões -->
+        <item name="buttonStyle">@style/CustomButtonStyle</item>
+    </style>
+
+    <!-- Estilo do botão personalizado -->
+    <style name="CustomButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/background_button</item>
+        <item name="android:padding">10dp</item>
+        <!-- Cor do texto do botão, que pode ser ajustada para um tom mais escuro ou mais claro -->
+        <item name="android:textColor">#ffffff</item>
+    </style>
+</resources>

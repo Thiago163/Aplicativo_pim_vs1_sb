@@ -1,0 +1,7 @@
+<resources>
+    <!-- Tema do Aplicativo -->
+    <style name="Theme.PIM_Mundo_Verde." parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Cor da barra de status (substitua pela cor desejada) -->
+        <item name="android:statusBarColor">#FFFAFA</item> <!-- Branco, altere conforme necessário -->
+    </style>
+</resources>

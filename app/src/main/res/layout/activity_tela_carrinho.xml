@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tela_carrinho">
+
+    <ImageButton
+        android:id="@+id/imageButtonVoltar6"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="19dp"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="menu"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_finalizar"
+        app:layout_constraintTop_toBottomOf="@+id/editTextQuantidade"
+        app:srcCompat="@drawable/voltar" />
+
+    <TextView
+        android:id="@+id/text_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view_carrinho"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_carrinho"
+        android:layout_width="400dp"
+        android:layout_height="440dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_remover_produto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_finalizar"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="28dp"
+        android:onClick="finalizarCompra"
+        android:text="Finalizar Compra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButtonVoltar6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_editar_quantidade" />
+
+    <!-- Campo para editar a quantidade -->
+
+    <Button
+        android:id="@+id/button_editar_quantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:onClick="editarQuantidade"
+        android:text="Editar Quantidade"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editTextQuantidade"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_remover_produto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginBottom="169dp"
+        android:onClick="removerProduto"
+        android:text="Remover Produto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_recuperar_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:onClick="recuperarItem"
+        android:text="Recuperar Item"
+        app:layout_constraintStart_toEndOf="@+id/button_editar_quantidade"
+        app:layout_constraintTop_toBottomOf="@+id/recycler_view_carrinho" />
+
+    <EditText
+        android:id="@+id/editTextQuantidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:hint="Quantidade"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/button_recuperar_item"
+        app:layout_constraintTop_toBottomOf="@+id/button_recuperar_item" />
+</androidx.constraintlayout.widget.ConstraintLayout>

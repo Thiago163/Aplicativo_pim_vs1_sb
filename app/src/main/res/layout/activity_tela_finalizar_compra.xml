@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".tela_finalizar_compra"
+    android:background="#F5F5F5">
+
+    <!-- Logo ou imagem de sucesso -->
+    <ImageView
+        android:id="@+id/imageView_success"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="Logo" />
+
+    <!-- Título "Revisão de Compra" -->
+    <TextView
+        android:id="@+id/textView_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Revisão de Compra"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        app:layout_constraintTop_toBottomOf="@id/imageView_success"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Lista de produtos no carrinho -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_revisao"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/textView_titulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/container_valor_total"/>
+
+    <!-- Container para exibir o total da compra e o botão de finalizar -->
+    <LinearLayout
+        android:id="@+id/container_valor_total"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="16dp"
+        android:elevation="4dp"
+        app:layout_constraintTop_toBottomOf="@id/recycler_view_revisao"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_voltar_menu">
+
+        <!-- Texto para exibir o valor total da compra -->
+        <TextView
+            android:id="@+id/text_total_revisao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: R$0,00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF5722"
+            android:gravity="end"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Mensagem de agradecimento -->
+        <TextView
+            android:id="@+id/textView_mensagem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Obrigado por sua compra! Você receberá um e-mail de confirmação em breve."
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:layout_marginTop="16dp"
+            android:padding="8dp" />
+
+        <!-- Botão para finalizar a compra -->
+        <Button
+            android:id="@+id/button_finalizar_compra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Finalizar Compra"
+            android:onClick="finalizarCompra"
+            android:backgroundTint="#4CAF50"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:elevation="2dp"/>
+    </LinearLayout>
+
+    <!-- Botão para voltar ao menu -->
+    <Button
+        android:id="@+id/button_voltar_menu"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Voltar ao Menu"
+        android:onClick="menu"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#9E9E9E"
+        android:textColor="#FFFFFF"
+        android:elevation="2dp"
+        app:layout_constraintTop_toBottomOf="@id/container_valor_total"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

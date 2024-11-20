@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:padding="15dp"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/nomeCampo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Plantação de Alfaces"
+        android:textSize="24sp"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/descricaoCampo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Quantidade de mudas: 100\nTamanho: 500 m²\nQualidade do solo: Boa"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nomeCampo" />
+
+    <TextView
+        android:id="@+id/statusCampo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status: Pronto para colheita"
+        android:textSize="18sp"
+        android:textColor="@android:color/holo_green_light"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descricaoCampo" />
+
+    <TextView
+        android:id="@+id/dataColheita"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Última colheita: 01/10/2024\nPróxima previsão: 15/11/2024"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statusCampo" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintTop_toBottomOf="@id/dataColheita"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/distancia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Localização:\n- Longitude: -45.123456\n- Latitude: -23.987654"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dataColheita" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

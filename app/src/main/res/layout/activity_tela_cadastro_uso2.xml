@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tela_cadastro_uso2">
+
+    <!-- Título da Tela -->
+    <Button
+        android:id="@+id/btn_proximoCad2"
+        android:layout_width="203dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#8C7530"
+        android:onClick="home"
+        android:text="Concluir"
+        android:textColorLink="#8C7530"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVoltar5"
+        android:layout_width="93dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="277dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="cadastro2"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/voltar" />
+
+    <TextView
+        android:id="@+id/textView_titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Dados do Cadastro"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Campo Nome -->
+    <TextView
+        android:id="@+id/textView_nome_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Nome: [Obrigatóro]"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_titulo" />
+
+    <TextView
+        android:id="@+id/textView_nome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_nome_label"
+        app:layout_constraintTop_toTopOf="@id/textView_nome_label" />
+
+    <!-- Campo Email -->
+    <TextView
+        android:id="@+id/textView_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Email: [Obrigatóro]"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_nome_label" />
+
+    <TextView
+        android:id="@+id/textView_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_email_label"
+        app:layout_constraintTop_toTopOf="@id/textView_email_label" />
+
+    <!-- Campo Senha -->
+    <TextView
+        android:id="@+id/textView_senha_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Senha: [Obrigatóro]"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_email_label" />
+
+    <TextView
+        android:id="@+id/textView_senha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_senha_label"
+        app:layout_constraintTop_toTopOf="@id/textView_senha_label" />
+
+    <!-- Campo CEP -->
+    <TextView
+        android:id="@+id/textView_cep_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="CEP:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_senha_label" />
+
+    <TextView
+        android:id="@+id/textView_cep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_cep_label"
+        app:layout_constraintTop_toTopOf="@id/textView_cep_label" />
+
+    <!-- Campo EF -->
+    <TextView
+        android:id="@+id/textView_ef_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Estado:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_cep_label" />
+
+    <TextView
+        android:id="@+id/textView_ef"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_ef_label"
+        app:layout_constraintTop_toTopOf="@id/textView_ef_label" />
+
+    <!-- Campo País -->
+    <TextView
+        android:id="@+id/textView_pais_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="País:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_ef_label" />
+
+    <TextView
+        android:id="@+id/textView_pais"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_pais_label"
+        app:layout_constraintTop_toTopOf="@id/textView_pais_label" />
+
+    <!-- Campo Tipo Documento -->
+    <TextView
+        android:id="@+id/textView_tipo_documento_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Tipo Documento:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_pais_label" />
+
+    <TextView
+        android:id="@+id/textView_tipo_documento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_tipo_documento_label"
+        app:layout_constraintTop_toTopOf="@id/textView_tipo_documento_label" />
+
+    <!-- Campo Documento -->
+    <TextView
+        android:id="@+id/textView_documento_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Documento:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_tipo_documento_label" />
+
+    <TextView
+        android:id="@+id/textView_documento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_documento_label"
+        app:layout_constraintTop_toTopOf="@id/textView_documento_label" />
+
+    <!-- Campo Telefone -->
+    <TextView
+        android:id="@+id/textView_telefone_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Telefone: [Obrigatóro]"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_documento_label" />
+
+    <TextView
+        android:id="@+id/textView_telefone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_telefone_label"
+        app:layout_constraintTop_toTopOf="@id/textView_telefone_label" />
+
+    <!-- Campo Cidade -->
+    <TextView
+        android:id="@+id/textView_cidade_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Cidade:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_telefone_label" />
+
+    <TextView
+        android:id="@+id/textView_cidade"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_cidade_label"
+        app:layout_constraintTop_toTopOf="@id/textView_cidade_label" />
+
+    <!-- Campo Rua -->
+    <TextView
+        android:id="@+id/textView_rua_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Rua:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_cidade_label" />
+
+    <TextView
+        android:id="@+id/textView_rua"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_rua_label"
+        app:layout_constraintTop_toTopOf="@id/textView_rua_label" />
+
+    <!-- Campo Número -->
+    <TextView
+        android:id="@+id/textView_numero_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Número:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_rua_label" />
+
+    <TextView
+        android:id="@+id/textView_numero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textView_numero_label"
+        app:layout_constraintTop_toTopOf="@id/textView_numero_label" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
