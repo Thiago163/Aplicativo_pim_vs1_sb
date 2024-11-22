@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,180 +8,223 @@
     android:padding="30dp"
     tools:context=".tela_fazendeiro">
 
-    <ImageButton
-        android:id="@+id/imageButton_Fazendeiro3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_image"
-        android:clipToOutline="true"
-        android:onClick="fazendeiro"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/fazendeiro" />
+    <!-- Container para o layout de conteúdo -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageButton
-        android:id="@+id/imageButton_Menu3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="155dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_image"
-        android:clipToOutline="true"
-        android:onClick="menu"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/menu" />
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/imgview_Logo2"
+            android:layout_width="300dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
 
-    <ImageButton
-        android:id="@+id/imageButton_Inicio3"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="280dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/rounded_image"
-        android:clipToOutline="true"
-        android:onClick="inicio"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/inicio" />
+        <!-- Nome -->
+        <TextView
+            android:id="@+id/textView_nome_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nome"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgview_Logo2" />
 
-    <ImageView
-        android:id="@+id/imgview_Logo2"
-        android:layout_width="300dp"
-        android:layout_height="160dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        <EditText
+            android:id="@+id/editText_nome"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="Nome do Usuário"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_nome_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
 
-    <TextView
-        android:id="@+id/textView_nome_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:text="Nome"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgview_Logo2" />
+        <!-- Email -->
+        <TextView
+            android:id="@+id/textView_email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Email"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_nome" />
 
-    <EditText
-        android:id="@+id/editText_nome"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Nome do Usuário"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/textView_nome_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/editText_email"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="email@exemplo.com"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_email_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
 
-    <TextView
-        android:id="@+id/textView_email_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Email"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_nome" />
+        <!-- Telefone -->
+        <TextView
+            android:id="@+id/textView_telefone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Telefone"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_email" />
 
-    <EditText
-        android:id="@+id/editText_email"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="email@exemplo.com"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/textView_email_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/editText_telefone"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="(99) 99999-9999"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_telefone_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
 
-    <TextView
-        android:id="@+id/textView_telefone_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Telefone"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_email" />
+        <!-- Documento -->
+        <TextView
+            android:id="@+id/textView_documento_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Documento"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_telefone" />
 
-    <EditText
-        android:id="@+id/editText_telefone"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="(99) 99999-9999"
-        android:padding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/textView_telefone_label"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <EditText
+            android:id="@+id/editText_documento"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="Documento"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_documento_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
 
-    <Button
-        android:id="@+id/btn_salvar"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#8C7530"
-        android:onClick="salvar"
-        android:text="Salvar"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editText_telefone" />
+        <!-- Tipo de Documento -->
+        <TextView
+            android:id="@+id/textView_tipo_documento_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Tipo de Documento"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_documento" />
 
-    <Button
-        android:id="@+id/btn_sair"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#89B428"
-        android:onClick="sair"
-        android:text="Sair"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_salvar" />
+        <EditText
+            android:id="@+id/editText_tipo_documento"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="CPF ou CNPJ"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_tipo_documento_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
 
-    <Button
-        android:id="@+id/btn_deletar_perfil"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="#FF0000"
-        android:onClick="sair"
-        android:text="Deletar Perfil"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_salvar" />
+        <!-- Senha -->
+        <TextView
+            android:id="@+id/textView_senha_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Senha"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_tipo_documento" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/editText_senha"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_border"
+            android:hint="Senha"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            app:layout_constraintTop_toBottomOf="@id/textView_senha_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp" />
+
+        <!-- Botão Salvar -->
+        <Button
+            android:id="@+id/btn_salvar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#8C7530"
+            android:onClick="salvar"
+            android:text="Salvar"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editText_senha" />
+
+        <!-- Botão Sair -->
+        <Button
+            android:id="@+id/btn_sair"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#89B428"
+            android:onClick="sair"
+            android:text="Sair"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_salvar" />
+
+        <!-- Botão Deletar Perfil -->
+        <Button
+            android:id="@+id/btn_deletar_perfil"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FF0000"
+            android:onClick="deletarPerfil"
+            android:text="Deletar Perfil"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_sair" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

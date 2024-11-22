@@ -6,34 +6,94 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.pim_mundo_verde.model.Fazendeiro;
+import com.example.pim_mundo_verde.services.FazendeiroApiService;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class tela_fazendeiro extends AppCompatActivity {
 
+    // Campos de entrada
     private EditText editTextNome;
     private EditText editTextEmail;
     private EditText editTextTelefone;
+    private EditText editTextDocumento;
+    private EditText editTextTipoDocumento;
+    private EditText editTextSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this); // Para trabalhar com a borda da tela
         setContentView(R.layout.activity_tela_fazendeiro);
 
         // Inicializa os campos de edição
         editTextNome = findViewById(R.id.editText_nome);
         editTextEmail = findViewById(R.id.editText_email);
         editTextTelefone = findViewById(R.id.editText_telefone);
+        editTextDocumento = findViewById(R.id.editText_documento);
+        editTextTipoDocumento = findViewById(R.id.editText_tipo_documento);
+        editTextSenha = findViewById(R.id.editText_senha);
+    }
 
-        // Aplica o padding para evitar sobreposição com a barra de status
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+    // Método para salvar as informações do fazendeiro na API
+    public void salvar(View view) {
+        // Captura os dados inseridos nos campos
+        String nome = editTextNome.getText().toString().trim();
+        String email = editTextEmail.getText().toString().trim();
+        String telefone = editTextTelefone.getText().toString().trim();
+        String documento = editTextDocumento.getText().toString().trim();
+        String tipoDocumento = editTextTipoDocumento.getText().toString().trim();
+        String senha = editTextSenha.getText().toString().trim();
+
+        // Validação simples dos campos (já mostrada antes)
+        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty() || documento.isEmpty() || tipoDocumento.isEmpty() || senha.isEmpty()) {
+            Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validações omitidas aqui por simplicidade (como email, telefone, documento, etc)
+
+        // Criando o objeto Fazendeiro
+        Fazendeiro fazendeiro = new Fazendeiro(nome, email, telefone, documento, tipoDocumento, senha);
+
+        // Configurando o Retrofit para fazer a requisição
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://<ip_do_servidor>:8085/api/fazendeiros") // URL base da sua API (substitua pelo seu servidor de produção ou desenvolvimento)
+                .addConverterFactory(GsonConverterFactory.create()) // Converter resposta JSON para objetos
+                .build();
+
+        // Criando a instância da interface da API
+        FazendeiroApiService apiService = retrofit.create(FazendeiroApiService.class);
+
+        // Fazendo a requisição POST para salvar o fazendeiro
+        Call<Void> call = apiService.salvarFazendeiro(fazendeiro);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    // Se a requisição for bem-sucedida
+                    Toast.makeText(tela_fazendeiro.this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show();
+                    // Redireciona para outra tela, como tela_menu_geral
+                    Intent in = new Intent(tela_fazendeiro.this, tela_menu_geral.class);
+                    startActivity(in);
+                    finish();
+                } else {
+                    // Se houver erro na requisição
+                    Toast.makeText(tela_fazendeiro.this, "Erro ao salvar informações.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                // Se ocorrer erro de rede ou outro erro
+                Toast.makeText(tela_fazendeiro.this, "Falha na conexão.", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
@@ -55,43 +115,5 @@ public class tela_fazendeiro extends AppCompatActivity {
         Intent in = new Intent(tela_fazendeiro.this, MainActivity.class);
         startActivity(in);
         finish(); // Opcional: fechar a tela atual
-    }
-
-    // Método para salvar as informações do usuário
-    public void salvar(View view) {
-        // Captura os dados inseridos nos campos
-        String nome = editTextNome.getText().toString().trim();
-        String email = editTextEmail.getText().toString().trim();
-        String telefone = editTextTelefone.getText().toString().trim();
-
-        // Validação simples dos campos
-        if (nome.isEmpty() || email.isEmpty() || telefone.isEmpty()) {
-            Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Validação do e-mail (simples)
-        if (!email.contains("@") || !email.contains(".")) {
-            Toast.makeText(this, "Por favor, insira um e-mail válido.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Validação do telefone (simples - apenas um número mínimo de dígitos)
-        if (telefone.length() < 10) {
-            Toast.makeText(this, "Por favor, insira um telefone válido.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Aqui você pode adicionar a lógica para salvar as informações do usuário
-        // Por exemplo, usando SharedPreferences ou um banco de dados SQLite.
-
-        // Exemplo de exibição de uma mensagem de sucesso
-        Toast.makeText(this, "Informações salvas com sucesso!", Toast.LENGTH_SHORT).show();
-
-        // Aqui você pode navegar para outra tela ou manter o usuário na mesma tela
-        // Exemplo de navegação para a tela de menu
-        Intent in = new Intent(tela_fazendeiro.this, tela_menu_geral.class);
-        startActivity(in);
-        finish();
     }
 }
