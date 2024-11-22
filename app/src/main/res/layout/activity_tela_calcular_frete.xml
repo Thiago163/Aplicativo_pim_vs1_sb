@@ -32,18 +32,17 @@
 
     <ImageButton
         android:id="@+id/imageButtonVoltar2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="15dp"
+        android:layout_width="163dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="234dp"
+        android:layout_marginEnd="14dp"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@android:color/transparent"
         android:onClick="home"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/botaoAvancar"
-        app:layout_constraintTop_toBottomOf="@+id/resultadoFrete"
+        app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/voltar" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -120,36 +119,35 @@
         android:id="@+id/botaoBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="19dp"
         android:padding="16dp"
         android:text="Buscar"
-        app:layout_constraintBottom_toTopOf="@+id/botaoAvancar"
-        app:layout_constraintStart_toStartOf="@+id/botaoAvancar" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pesoProduto" />
 
     <TextView
         android:id="@+id/resultadoFrete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginBottom="8dp"
         android:padding="16dp"
         android:text="Resultado do Frete"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonVoltar2"
-        app:layout_constraintTop_toBottomOf="@+id/pesoProduto" />
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonVoltar2"
+        app:layout_constraintStart_toStartOf="@+id/imageButtonVoltar2" />
 
     <Button
         android:id="@+id/botaoAvancar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="163dp"
+        android:layout_height="55dp"
         android:layout_marginStart="33dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="37dp"
-        android:layout_marginBottom="10dp"
-        android:padding="16dp"
+        android:layout_marginEnd="215dp"
+        android:layout_marginBottom="35dp"
         android:onClick="avancarParaProximaTela"
+        android:padding="16dp"
         android:text="Avançar"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButtonVoltar2"
-        app:layout_constraintEnd_toStartOf="@+id/imageButtonVoltar2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButtonVoltar2" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,5 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="verde_claro">#e6f9ec</color>
     <color name="selecionado">#4CAF50</color>
-    <color name="nao_selecionado">#FFFFFF</color>
+    <color name="nao_selecionado">#e6f9ec</color>
 </resources>
