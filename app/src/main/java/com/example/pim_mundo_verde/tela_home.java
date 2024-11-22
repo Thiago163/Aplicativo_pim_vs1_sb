@@ -50,7 +50,7 @@ public class tela_home extends AppCompatActivity {
     }
 
     public void Controle_campos(View view) {
-        Intent in = new Intent(tela_home.this, tela_controle_campos.class); // Use o nome correto da classe
+        Intent in = new Intent(tela_home.this, tela_vendas.class); // Use o nome correto da classe
         startActivity(in);
     }
 }
