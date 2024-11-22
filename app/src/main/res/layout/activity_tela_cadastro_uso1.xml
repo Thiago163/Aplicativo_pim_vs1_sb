@@ -7,259 +7,202 @@
     android:layout_height="match_parent"
     tools:context=".tela_cadastro_uso1">
 
-    <Button
-        android:id="@+id/btn_proximoCad"
-        android:layout_width="203dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="#8C7530"
-        android:onClick="Cad1"
-        android:text="Próximo"
-        android:textColorLink="#8C7530"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView27"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="372dp"
-        android:layout_marginEnd="216dp"
-        android:layout_marginBottom="340dp"
-        android:text="Telefone  [Obrigatório]"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_documento"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="217dp"
-        android:layout_marginTop="318dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="361dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Documento"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_tipo_documento"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="318dp"
-        android:layout_marginEnd="218dp"
-        android:layout_marginBottom="361dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="RG, CPF, etc"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="537dp"
-        android:layout_marginEnd="328dp"
-        android:layout_marginBottom="175dp"
-        android:text="Rua"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_cidade"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="469dp"
-        android:layout_marginEnd="212dp"
-        android:layout_marginBottom="210dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Cidade"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="308dp"
-        android:layout_marginBottom="262dp"
-        android:text="Cidade"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="218dp"
-        android:layout_marginTop="450dp"
-        android:layout_marginEnd="90dp"
-        android:layout_marginBottom="262dp"
-        android:text="Número do local"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_numero"
-        android:layout_width="148dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="210dp"
-        android:layout_marginTop="469dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="210dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Número local"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <EditText
-        android:id="@+id/editText_nome"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="391dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="290dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Telefone [Obrigatório]"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editText_rua"
-        android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="556dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="125dp"
-        android:background="@drawable/edit_text_border"
-        android:hint="Logradouro"
-        android:ems="10"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorLink="#03A9F4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButtonVoltar4"
-        android:layout_width="93dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="277dp"
-        android:layout_marginEnd="41dp"
-        android:layout_marginBottom="25dp"
-        android:backgroundTint="@android:color/transparent"
-        android:onClick="Cad"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/voltar" />
-
+    <!-- Imagem do cabeçalho -->
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="436dp"
-        android:layout_height="269dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/alfaces" />
 
+    <!-- Título -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="138dp"
-        android:layout_marginEnd="239dp"
-        android:background="#8C7530"
         android:text="Cadastro"
-        android:textColorHint="#8C7530"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#8C7530"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="20dp" />
 
-    <TextView
-        android:id="@+id/textViewt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="299dp"
-        android:layout_marginEnd="257dp"
-        android:layout_marginBottom="413dp"
-        android:text="Tipo Documento"
+    <!-- Botão Voltar ao lado do título -->
+    <ImageButton
+        android:id="@+id/imageButtonVoltar4"
+        android:layout_width="93dp"
+        android:layout_height="87dp"
+        android:backgroundTint="@android:color/transparent"
+        android:onClick="Cad"
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/voltar"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp" />
+
+    <!-- Barra de rolagem para os campos de entrada -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/btn_proximoCad"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- LinearLayout para organizar os campos -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Tipo Documento -->
+            <TextView
+                android:id="@+id/textViewt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo Documento"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_tipo_documento"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="RG, CPF, etc"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Documento -->
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Documento"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_documento"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Documento"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Telefone -->
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone [Obrigatório]"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_nome"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Telefone [Obrigatório]"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Rua -->
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rua"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_rua"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Logradouro"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Cidade -->
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cidade"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_cidade"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Cidade"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+
+            <!-- Número local -->
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Número do local"
+                android:textSize="16sp"
+                android:textColor="#000000"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/editText_numero"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edit_text_border"
+                android:hint="Número local"
+                android:inputType="text"
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:layout_marginBottom="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Botão Próximo -->
+    <Button
+        android:id="@+id/btn_proximoCad"
+        android:layout_width="203dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#8C7530"
+        android:onClick="Cad1"
+        android:text="Próximo"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="229dp"
-        android:layout_marginTop="299dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="413dp"
-        android:text="Documento"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_marginBottom="36dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
