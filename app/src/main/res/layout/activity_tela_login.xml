@@ -9,13 +9,13 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="436dp"
-        android:layout_height="269dp"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/alfaces" />
 
     <TextView
@@ -23,13 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="113dp"
+        android:layout_marginTop="220dp"
         android:layout_marginEnd="292dp"
-        android:background="#8C7530"
         android:text="Login"
-        android:textColorHint="#8C7530"
         android:textSize="34sp"
+        android:textColor="#8C7530"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
