@@ -7,147 +7,161 @@
     android:layout_height="match_parent"
     tools:context=".tela_calcular_frete">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/pesoProduto"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:hint="Peso do Produto (kg)"
-        android:inputType="numberDecimal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Imagem do cabeçalho -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cepDestino" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/frutas" />
+
+    <!-- Título -->
+
+    <!-- Botão Voltar -->
 
     <TextView
-        android:id="@+id/textCalcularFrete"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="32dp"
         android:text="Calcular frete"
-        android:textSize="24sp"
+        android:textColor="#8C7530"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.641"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView3" />
 
     <ImageButton
-        android:id="@+id/imageButtonVoltar2"
-        android:layout_width="163dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="234dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="25dp"
+        android:id="@+id/imageButtonVoltar4"
+        android:layout_width="93dp"
+        android:layout_height="87dp"
         android:backgroundTint="@android:color/transparent"
         android:onClick="home"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/voltar"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp" />
+
+    <!-- Barra de rolagem para os campos de entrada -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/voltar" />
+        android:fillViewport="true">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/cepOrigem"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
-        android:hint="CEP de Origem"
-        android:inputType="number"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/logradouro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Logradouro"
-        android:inputType="text"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cepOrigem" />
+            <!-- Campos de entrada de texto -->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pesoProduto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Peso do Produto (kg)"
+                android:inputType="numberDecimal"
+                android:padding="16dp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/localidade"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Cidade"
-        android:inputType="text"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logradouro" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cepOrigem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CEP de Origem"
+                android:inputType="number"
+                android:padding="16dp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/bairro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Bairro"
-        android:inputType="text"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/localidade" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/logradouro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Logradouro"
+                android:inputType="text"
+                android:padding="16dp" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/ufSpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bairro" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/localidade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cidade"
+                android:inputType="text"
+                android:padding="16dp" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/cepDestino"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:hint="CEP de Destino"
-        android:inputType="number"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ufSpinner" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bairro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Bairro"
+                android:inputType="text"
+                android:padding="16dp" />
 
-    <Button
-        android:id="@+id/botaoBuscar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="19dp"
-        android:padding="16dp"
-        android:text="Buscar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pesoProduto" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/ufSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp" />
 
-    <TextView
-        android:id="@+id/resultadoFrete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:padding="16dp"
-        android:text="Resultado do Frete"
-        app:layout_constraintBottom_toTopOf="@+id/imageButtonVoltar2"
-        app:layout_constraintStart_toStartOf="@+id/imageButtonVoltar2" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/cepDestino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="CEP de Destino"
+                android:inputType="number"
+                android:padding="16dp" />
 
-    <Button
-        android:id="@+id/botaoAvancar"
-        android:layout_width="163dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginEnd="215dp"
-        android:layout_marginBottom="35dp"
-        android:onClick="avancarParaProximaTela"
-        android:padding="16dp"
-        android:text="Avançar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <!-- Resultado do Frete -->
+            <TextView
+                android:id="@+id/resultadoFrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resultado do Frete"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:textSize="18sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+        <!-- Botões "Buscar" e "Avançar" fixados na parte inferior -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!-- Botão Buscar -->
+            <Button
+                android:id="@+id/botaoBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Buscar"
+                android:padding="16dp"
+                android:onClick="buscarFrete"
+                android:layout_marginEnd="16dp" /> <!-- Espaçamento à direita -->
+
+            <!-- Botão Avançar -->
+            <Button
+                android:id="@+id/botaoAvancar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avançar"
+                android:padding="16dp"
+                android:onClick="avancarParaProximaTela" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
