@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tela_cliente_teste"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".tela_cliente_teste"
+    android:padding="16dp">
+
+    <!-- Texto explicativo para o Spinner -->
+    <TextView
+        android:id="@+id/labelClientes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecione um Cliente"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Spinner para listar clientes -->
+    <Spinner
+        android:id="@+id/spinnerClientes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/labelClientes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Campo ID (somente leitura) -->
+    <TextView
+        android:id="@+id/labelId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ID do Cliente"
+        app:layout_constraintTop_toBottomOf="@id/spinnerClientes"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/editTextId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/labelId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo Nome -->
+    <TextView
+        android:id="@+id/labelNome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome do Cliente"
+        app:layout_constraintTop_toBottomOf="@id/editTextId"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/labelNome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Campo Email -->
+    <TextView
+        android:id="@+id/labelEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email do Cliente"
+        app:layout_constraintTop_toBottomOf="@id/editTextNome"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/labelEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Botão para carregar a lista de clientes -->
+    <Button
+        android:id="@+id/buttonLoadClientes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Carregar Clientes"
+        app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Botão para incluir um novo cliente -->
+    <Button
+        android:id="@+id/buttonAddCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Incluir Cliente"
+        app:layout_constraintTop_toBottomOf="@id/buttonLoadClientes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Botão para atualizar cliente selecionado -->
+    <Button
+        android:id="@+id/buttonUpdateCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Atualizar Cliente"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Botão para deletar cliente selecionado -->
+    <Button
+        android:id="@+id/buttonDeleteCliente"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Deletar Cliente"
+        app:layout_constraintTop_toBottomOf="@id/buttonUpdateCliente"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

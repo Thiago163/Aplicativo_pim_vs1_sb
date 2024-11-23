@@ -28,4 +28,9 @@ public class MainActivity extends AppCompatActivity {
         Intent in = new Intent(MainActivity.this, tela_login.class); // Use o nome correto da classe
         startActivity(in);
     }
+
+    public void tela_cliente_teste(View view) {
+        Intent in = new Intent(MainActivity.this, tela_cliente_teste.class); // Use o nome correto da classe
+        startActivity(in);
+    }
 }
