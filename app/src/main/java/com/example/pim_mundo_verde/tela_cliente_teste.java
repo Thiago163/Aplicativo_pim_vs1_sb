@@ -1,5 +1,6 @@
 package com.example.pim_mundo_verde;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -198,5 +199,10 @@ public class tela_cliente_teste extends AppCompatActivity {
                 runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao deletar cliente", Toast.LENGTH_SHORT).show()); // Mensagem de erro.
             }
         }).start();
+    }
+
+    public void Main(View view) {
+        Intent in = new Intent(tela_cliente_teste.this, MainActivity.class); // Use o nome correto da classe
+        startActivity(in);
     }
 }

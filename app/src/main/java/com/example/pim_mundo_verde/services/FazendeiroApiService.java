@@ -10,6 +10,6 @@ import retrofit2.http.POST;
 public interface FazendeiroApiService {
 
     // Definindo o método para salvar um novo fazendeiro
-    @POST("api/fazendeiro/salvar")  // Substitua o URL com o endpoint correto
+    @POST("http://localhost:8085/api/clientes")  // Substitua o URL com o endpoint correto
     Call<Void> salvarFazendeiro(@Body Fazendeiro fazendeiro);  // Envia o objeto Fazendeiro para o servidor
 }
