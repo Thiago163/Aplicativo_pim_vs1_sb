@@ -39,12 +39,11 @@
         android:id="@+id/recycler_view_carrinho"
         android:layout_width="400dp"
         android:layout_height="440dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button_remover_produto"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
