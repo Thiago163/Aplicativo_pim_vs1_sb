@@ -3,8 +3,6 @@ package com.example.pim_mundo_verde;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -17,10 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 public class tela_home extends AppCompatActivity {
 
     private ImageView imageView;
-    private int[] images = {R.drawable.frutas, R.drawable.alfaces, R.drawable.logo_mv, R.drawable.logo,}; // Substitua com suas imagens reais
+    private int[] images = {R.drawable.frutas, R.drawable.alfaces, R.drawable.logo_mv, R.drawable.logo}; // Substitua com suas imagens reais
     private int currentImageIndex = 0;
-
-    private GestureDetector gestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +27,6 @@ public class tela_home extends AppCompatActivity {
         // Inicializa o ImageView
         imageView = findViewById(R.id.imageView);
 
-        // Configura o GestureDetector para detectar os gestos de deslizar
-        gestureDetector = new GestureDetector(this, new GestureListener());
-
         // Configura o Handler para trocar a imagem a cada 30 segundos (30000 ms)
         final Handler handler = new Handler();
         Runnable runnable = new Runnable() {
@@ -41,8 +34,8 @@ public class tela_home extends AppCompatActivity {
             public void run() {
                 // Troca a imagem
                 trocarImagem();
-                // Chama o método novamente após 30 segundos
-                handler.postDelayed(this, 1500);
+                // Chama o método novamente após alguns segundos
+                handler.postDelayed(this, 2000);
             }
         };
 
@@ -63,28 +56,6 @@ public class tela_home extends AppCompatActivity {
         currentImageIndex = (currentImageIndex + 1) % images.length;
         // Troca a imagem no ImageView
         imageView.setImageResource(images[currentImageIndex]);
-    }
-
-    // Classe interna para lidar com os gestos de deslizar
-    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            // Detecta se foi um deslizar para a direita ou para a esquerda
-            if (e1.getX() < e2.getX()) {
-                // Deslizou para a direita (troca a imagem)
-                trocarImagem();
-            } else if (e1.getX() > e2.getX()) {
-                // Deslizou para a esquerda (troca a imagem)
-                trocarImagem();
-            }
-            return true;
-        }
-    }
-
-    // Captura os gestos de toque na tela para permitir o deslizar
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        return gestureDetector.onTouchEvent(event) || super.onTouchEvent(event);
     }
 
     public void colheita(View view) {
