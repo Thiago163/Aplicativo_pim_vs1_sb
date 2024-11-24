@@ -24,8 +24,8 @@ import org.json.JSONObject;
 
 public class tela_calcular_frete extends AppCompatActivity {
 
-    private EditText cepEditText, logradouroEditText, localidadeEditText, bairroEditText, ufEditText;
-    private Button buscarButton, avancarButton;
+    private EditText cepEditText, logradouroEditText, localidadeEditText, bairroEditText, ufEditText, cepDestino;
+    private Button buscarButton, avancarButton, calcularFreteButton;
     private TextView resultadoFrete;
     private TextInputEditText pesoProdutoEditText; // Campo para exibir o peso do produto
     private boolean isFormComplete = false;
@@ -41,24 +41,53 @@ public class tela_calcular_frete extends AppCompatActivity {
         localidadeEditText = findViewById(R.id.localidade);
         bairroEditText = findViewById(R.id.bairro);
         ufEditText = findViewById(R.id.ufEditText);
+        cepDestino = findViewById(R.id.cepDestino);  // Inicializa o campo cepDestino
         pesoProdutoEditText = findViewById(R.id.pesoProduto);  // Referência para o campo de peso
         buscarButton = findViewById(R.id.botaoBuscar);
         avancarButton = findViewById(R.id.botaoAvancar);
+        calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Botão "Calcular frete"
         resultadoFrete = findViewById(R.id.resultadoFrete);
 
         // Recupera a quantidade de produtos passada da tela anterior
         int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0 se não for passado
 
-// Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
+        // Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
         float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
 
-// Exibe o peso total no campo de texto, formatado com duas casas decimais
+        // Exibe o peso total no campo de texto, formatado com duas casas decimais
         pesoProdutoEditText.setText(String.format("%.2f kilos", pesoTotal));
-
 
         // Configura os listeners para os botões
         buscarButton.setOnClickListener(v -> buscarCep());
         avancarButton.setOnClickListener(v -> avancarParaProximaTela());
+
+        // Ação do botão "Calcular frete"
+        calcularFreteButton.setOnClickListener(v -> calcularFrete());
+    }
+
+    // Método para calcular o frete
+    private void calcularFrete() {
+        // Verificar se todos os campos obrigatórios estão preenchidos
+        verificarCamposPreenchidos();
+
+        String cepDestinoText = cepDestino.getText().toString().trim();
+        if (cepDestinoText.isEmpty()) {
+            Toast.makeText(this, "Por favor, insira um CEP de destino válido", Toast.LENGTH_SHORT).show();
+            return; // Retorna se o campo não estiver preenchido
+        }
+
+        if (isFormComplete) {
+            // Calcular o valor do frete (pesoTotal * 1.5)
+            String pesoProdutoText = pesoProdutoEditText.getText().toString().trim();
+            float pesoProduto = pesoProdutoText.isEmpty() ? 0.0f : Float.parseFloat(pesoProdutoText.split(" ")[0]);
+
+            float valorFrete = pesoProduto * 1.5f;
+
+            // Exibe o resultado do frete
+            resultadoFrete.setText(String.format("Valor do frete: R$ %.2f", valorFrete));
+        } else {
+            Toast.makeText(this, "Por favor, preencha todos os campos obrigatórios", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void buscarCep() {

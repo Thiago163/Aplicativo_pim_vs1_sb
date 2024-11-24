@@ -120,7 +120,7 @@
                 android:id="@+id/cepDestino"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CEP de Destino"
+                android:hint="CEP de Destino [Obrigatório]"
                 android:inputType="number"
                 android:padding="16dp" />
 
@@ -156,7 +156,17 @@
                 android:text="Buscar"
                 android:padding="16dp"
                 android:onClick="buscarFrete"
-                android:layout_marginEnd="16dp" /> <!-- Espaçamento à direita -->
+                android:layout_marginEnd="6dp" /> <!-- Espaçamento à direita -->
+
+            <!-- Botão Calcular frete -->
+            <Button
+                android:id="@+id/botaoCalcularFrete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calcular frete"
+                android:padding="16dp"
+                android:onClick="CalcularFrete"
+                android:layout_marginEnd="6dp"/>
 
             <!-- Botão Avançar -->
             <Button

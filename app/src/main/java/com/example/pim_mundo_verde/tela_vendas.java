@@ -85,4 +85,9 @@ public class tela_vendas extends AppCompatActivity implements AdapterProduto.OnI
         Intent in = new Intent(tela_vendas.this, tela_menu_geral.class);
         startActivity(in);
     }
+
+    public void carrinho(View view) {
+        Intent in = new Intent(tela_vendas.this, tela_carrinho.class);
+        startActivity(in);
+    }
 }
