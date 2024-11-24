@@ -2,8 +2,6 @@ package com.example.pim_mundo_verde;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,12 +10,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONObject;
 
@@ -26,6 +27,7 @@ public class tela_calcular_frete extends AppCompatActivity {
     private EditText cepEditText, logradouroEditText, localidadeEditText, bairroEditText, ufEditText;
     private Button buscarButton, avancarButton;
     private TextView resultadoFrete;
+    private TextInputEditText pesoProdutoEditText; // Campo para exibir o peso do produto
     private boolean isFormComplete = false;
 
     @Override
@@ -38,15 +40,24 @@ public class tela_calcular_frete extends AppCompatActivity {
         logradouroEditText = findViewById(R.id.logradouro);
         localidadeEditText = findViewById(R.id.localidade);
         bairroEditText = findViewById(R.id.bairro);
-        ufEditText = findViewById(R.id.ufEditText);  // Alterado para EditText para o campo UF
+        ufEditText = findViewById(R.id.ufEditText);
+        pesoProdutoEditText = findViewById(R.id.pesoProduto);  // Referência para o campo de peso
         buscarButton = findViewById(R.id.botaoBuscar);
         avancarButton = findViewById(R.id.botaoAvancar);
         resultadoFrete = findViewById(R.id.resultadoFrete);
 
-        // Configura o botão de buscar CEP
-        buscarButton.setOnClickListener(v -> buscarCep());
+        // Recupera a quantidade de produtos passada da tela anterior
+        int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0 se não for passado
 
-        // Configura o botão avançar
+// Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
+        float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
+
+// Exibe o peso total no campo de texto, formatado com duas casas decimais
+        pesoProdutoEditText.setText(String.format("%.2f kilos", pesoTotal));
+
+
+        // Configura os listeners para os botões
+        buscarButton.setOnClickListener(v -> buscarCep());
         avancarButton.setOnClickListener(v -> avancarParaProximaTela());
     }
 
@@ -136,10 +147,9 @@ public class tela_calcular_frete extends AppCompatActivity {
             Intent intent = new Intent(tela_calcular_frete.this, tela_menu_geral.class);
             startActivity(intent);
 
-            Log.d("BotaoHome", "Intent iniciada com sucesso para tela_finalizar_compra");
+            Log.d("BotaoHome", "Intent iniciada com sucesso.");
         } catch (Exception e) {
-            Log.e("ErroBotaoHome", "Erro ao tentar iniciar a tela de finalização", e);
-            Toast.makeText(this, "Erro ao tentar voltar para a tela de finalização", Toast.LENGTH_SHORT).show();
+            Log.e("BotaoHome", "Erro ao navegar para a tela de menu: " + e.getMessage());
         }
     }
 }

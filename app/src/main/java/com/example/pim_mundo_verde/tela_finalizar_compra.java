@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pim_mundo_verde.Adapter.AdapterProduto;
 import com.example.pim_mundo_verde.model.Produto;
+import com.example.pim_mundo_verde.tela_menu_geral;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class tela_finalizar_compra extends AppCompatActivity {
     private RecyclerView recyclerViewRevisao;
     private TextView textTotal;
+    private TextView textQuantidadeProdutos;  // Novo TextView para mostrar a quantidade de produtos
     private List<Produto> produtosCarrinho;
 
     @Override
@@ -27,6 +27,7 @@ public class tela_finalizar_compra extends AppCompatActivity {
 
         recyclerViewRevisao = findViewById(R.id.recycler_view_revisao);
         textTotal = findViewById(R.id.text_total_revisao);
+        textQuantidadeProdutos = findViewById(R.id.text_quantidade_produtos);  // Referência para o novo TextView
 
         // Recebe a lista de produtos do carrinho
         Intent intent = getIntent();
@@ -37,7 +38,9 @@ public class tela_finalizar_compra extends AppCompatActivity {
         recyclerViewRevisao.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewRevisao.setAdapter(adapterProduto);
 
+        // Atualiza o total e a quantidade de produtos
         atualizarTotal();
+        atualizarQuantidadeProdutos();
     }
 
     private void atualizarTotal() {
@@ -48,14 +51,30 @@ public class tela_finalizar_compra extends AppCompatActivity {
         textTotal.setText(String.format("Total: R$ %.2f", total));
     }
 
-    public void finalizarCompra(View view) {
+    private void atualizarQuantidadeProdutos() {
+        // Soma a quantidade de cada produto no carrinho
+        int quantidadeTotal = 0;
+        for (Produto produto : produtosCarrinho) {
+            quantidadeTotal += produto.getQuantidade();  // Adiciona a quantidade do produto
+        }
+        textQuantidadeProdutos.setText("Quantidade de produtos: " + quantidadeTotal);
+    }
 
+    public void finalizarCompra(View view) {
         // Atualizar o total
         atualizarTotal();
 
-        // Ação para redirecionar ao menu ou outra tela
-        Intent in = new Intent(tela_finalizar_compra.this, tela_calcular_frete.class);
-        startActivity(in);
+        // Passa a quantidade de produtos para a tela de calcular frete
+        int quantidadeProdutos = 0;
+        for (Produto produto : produtosCarrinho) {
+            quantidadeProdutos += produto.getQuantidade();  // Conta o total de unidades
+
+        }
+
+        // Ação para redirecionar à tela de calcular frete
+        Intent intent = new Intent(tela_finalizar_compra.this, tela_calcular_frete.class);
+        intent.putExtra("quantidadeProdutos", quantidadeProdutos);  // Passando a quantidade total de unidades
+        startActivity(intent);
     }
 
     public void menu(View view) {

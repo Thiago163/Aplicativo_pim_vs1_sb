@@ -64,14 +64,16 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Campos de entrada de texto -->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pesoProduto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Peso do Produto (kg)"
                 android:inputType="numberDecimal"
-                android:padding="16dp" />
+                android:padding="16dp"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/cepOrigem"
