@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    tools:context=".tela_agradecimentos_compra">
+
+    <!-- Texto de Agradecimento -->
+    <TextView
+        android:id="@+id/text_agradecimento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Obrigado pela sua compra!"
+        android:textSize="24sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"/>
+
+    <!-- Detalhes da compra -->
+    <TextView
+        android:id="@+id/text_cep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CEP: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/text_endereco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Endereço: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/text_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso Total: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/text_valor_compra"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor da Compra: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/text_frete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor do Frete: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="12dp"
+        android:fontFamily="sans-serif"/>
+
+    <TextView
+        android:id="@+id/text_valor_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor Total: "
+        android:textSize="16sp"
+        android:textColor="#555555"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="sans-serif"/>
+
+    <!-- Botão de ação (exemplo, como sugestão para uma ação final) -->
+    <Button
+        android:id="@+id/btn_finalizar_compra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Concluir compra"
+        android:onClick="home"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="20dp"
+        android:padding="12dp"/>
+</LinearLayout>

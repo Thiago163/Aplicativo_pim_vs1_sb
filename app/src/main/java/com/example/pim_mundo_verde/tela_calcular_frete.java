@@ -135,13 +135,27 @@ public class tela_calcular_frete extends AppCompatActivity {
         String resultadoFreteText = resultadoFrete.getText().toString().trim();
 
         if (isFormComplete && !resultadoFreteText.isEmpty()) {
-            // Limpar o carrinho
-            Carrinho.getInstance().limparCarrinho();  // Limpa o carrinho após a compra
+            // Recupera os dados da tela
+            String cep = cepEditText.getText().toString().trim();
+            String logradouro = logradouroEditText.getText().toString().trim();
+            String bairro = bairroEditText.getText().toString().trim();
+            String localidade = localidadeEditText.getText().toString().trim();
+            String uf = ufEditText.getText().toString().trim();
+            float pesoProduto = Float.parseFloat(pesoProdutoEditText.getText().toString().trim());
+            double valorCompra = getIntent().getDoubleExtra("valorCompra", 0.0);
+            float valorFrete = Float.parseFloat(resultadoFrete.getText().toString().replace("Valor do frete: R$ ", "").trim());
 
-            // Navegar para a próxima tela (tela_home, por exemplo)
-            Intent in = new Intent(tela_calcular_frete.this, tela_home.class);
-            in.putExtra("compraFinalizada", true);  // Passa o sinalizador para a próxima tela
-            startActivity(in);
+            // Passa os dados para a tela de agradecimento
+            Intent intent = new Intent(tela_calcular_frete.this, tela_agradecimentos_compra.class);
+            intent.putExtra("cep", cep);
+            intent.putExtra("logradouro", logradouro);
+            intent.putExtra("bairro", bairro);
+            intent.putExtra("localidade", localidade);
+            intent.putExtra("uf", uf);
+            intent.putExtra("pesoProduto", pesoProduto);
+            intent.putExtra("valorCompra", valorCompra);
+            intent.putExtra("valorFrete", valorFrete);
+            startActivity(intent);
         } else {
             Toast.makeText(this, "Por favor, calcule o frete antes de avançar", Toast.LENGTH_SHORT).show();
         }

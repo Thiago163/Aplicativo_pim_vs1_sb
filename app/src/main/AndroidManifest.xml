@@ -15,6 +15,9 @@
         android:theme="@style/Theme.PIM_Mundo_Verde"
         tools:targetApi="31">
         <activity
+            android:name=".tela_agradecimentos_compra"
+            android:exported="false" />
+        <activity
             android:name=".tela_cliente_teste"
             android:exported="false" />
         <activity
