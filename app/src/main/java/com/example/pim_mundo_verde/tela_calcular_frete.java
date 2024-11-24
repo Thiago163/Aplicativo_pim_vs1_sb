@@ -41,56 +41,26 @@ public class tela_calcular_frete extends AppCompatActivity {
         localidadeEditText = findViewById(R.id.localidade);
         bairroEditText = findViewById(R.id.bairro);
         ufEditText = findViewById(R.id.ufEditText);
-        cepDestino = findViewById(R.id.cepDestino);  // Inicializa o campo cepDestino
         pesoProdutoEditText = findViewById(R.id.pesoProduto);  // Referência para o campo de peso
         buscarButton = findViewById(R.id.botaoBuscar);
+        cepDestino = findViewById(R.id.cepDestino);  // Inicializa o campo cepDestino
         avancarButton = findViewById(R.id.botaoAvancar);
-        calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Botão "Calcular frete"
         resultadoFrete = findViewById(R.id.resultadoFrete);
+        calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Inicializando o botão de calcular frete
 
-        // Recupera a quantidade de produtos e o valor da compra passados da tela anterior
-        int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0
-        double valorCompra = getIntent().getDoubleExtra("valorCompra", 0.0);  // Valor default é 0.0
+        // Recupera a quantidade de produtos passada da tela anterior
+        int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0 se não for passado
 
-        // Agora você pode usar o valor da compra (valorCompra)
-        // Exemplo de como exibir o valor da compra na tela
-        // Você pode colocar esse valor em algum TextView ou usar em outro lugar conforme necessário
-        Log.d("Valor da Compra", "Total da Compra: R$ " + valorCompra);
+        // Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
+        float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
 
-        // Agora, você pode usar o valor da compra, que foi passado, em qualquer lugar do código
-        // Exemplo: mostrar o valor da compra em um TextView, se necessário
-        TextView valorCompraTextView = findViewById(R.id.text_valor_compra);
-        valorCompraTextView.setText(String.format("Valor Total: R$ %.2f", valorCompra));
+        // Exibe o peso total no campo de texto, formatado com duas casas decimais
+        pesoProdutoEditText.setText(String.format("%.2f", pesoTotal));
 
         // Configura os listeners para os botões
         buscarButton.setOnClickListener(v -> buscarCep());
         avancarButton.setOnClickListener(v -> avancarParaProximaTela());
-        calcularFreteButton.setOnClickListener(v -> calcularFrete());
-    }
-
-    // Método para calcular o frete
-    private void calcularFrete() {
-        // Verificar se todos os campos obrigatórios estão preenchidos
-        verificarCamposPreenchidos();
-
-        String cepDestinoText = cepDestino.getText().toString().trim();
-        if (cepDestinoText.isEmpty()) {
-            Toast.makeText(this, "Por favor, insira um CEP de destino válido", Toast.LENGTH_SHORT).show();
-            return; // Retorna se o campo não estiver preenchido
-        }
-
-        if (isFormComplete) {
-            // Calcular o valor do frete (pesoTotal * 1.5)
-            String pesoProdutoText = pesoProdutoEditText.getText().toString().trim();
-            float pesoProduto = pesoProdutoText.isEmpty() ? 0.0f : Float.parseFloat(pesoProdutoText.split(" ")[0]);
-
-            float valorFrete = pesoProduto * 1.5f;
-
-            // Exibe o resultado do frete
-            resultadoFrete.setText(String.format("Valor do frete: R$ %.2f", valorFrete));
-        } else {
-            Toast.makeText(this, "Por favor, preencha todos os campos obrigatórios", Toast.LENGTH_SHORT).show();
-        }
+        calcularFreteButton.setOnClickListener(v -> calcularFrete()); // Definindo a ação para o cálculo do frete
     }
 
     private void buscarCep() {
@@ -153,11 +123,13 @@ public class tela_calcular_frete extends AppCompatActivity {
     }
 
     private void avancarParaProximaTela() {
-        // Verificar se todos os campos estão preenchidos antes de avançar
+        // Verificar se todos os campos obrigatórios estão preenchidos antes de avançar
         verificarCamposPreenchidos();
 
-        // Verificar se o frete foi calculado
-        if (isFormComplete && resultadoFrete.getText().toString().contains("Valor do frete: R$")) {
+        // Verificar se o valor do frete foi calculado e exibido
+        String resultadoFreteText = resultadoFrete.getText().toString().trim();
+
+        if (isFormComplete && !resultadoFreteText.isEmpty()) {
             // Limpar o carrinho
             Carrinho.getInstance().limparCarrinho();  // Limpa o carrinho após a compra
 
@@ -170,10 +142,32 @@ public class tela_calcular_frete extends AppCompatActivity {
         }
     }
 
+    // Método para calcular o frete
+    private void calcularFrete() {
+        // Verificar se todos os campos obrigatórios estão preenchidos
+        verificarCamposPreenchidos();
+
+        String cepDestinoText = cepDestino.getText().toString().trim();
+
+        if (cepDestinoText.isEmpty() || !isFormComplete) {
+            Toast.makeText(this, "Por favor, insira todos os campos", Toast.LENGTH_SHORT).show();
+            return; // Retorna se o campo não estiver preenchido
+        }
+
+        // Calcular o valor do frete (pesoProduto * 1.5)
+        String pesoProdutoText = pesoProdutoEditText.getText().toString().trim();
+        float pesoProduto = pesoProdutoText.isEmpty() ? 0.0f : Float.parseFloat(pesoProdutoText);
+
+        float valorFrete = pesoProduto * 1.5f;
+
+        // Exibe o resultado do frete
+        resultadoFrete.setText(String.format("Valor do frete: R$ %.2f", valorFrete));
+    }
+
     // Método corrigido para o botão Home (voltar)
     public void home(View view) {
-            // Navegar para a tela de finalizar compra
-    Intent intent = new Intent(tela_calcular_frete.this, tela_menu_geral.class);
-    startActivity(intent);
+        // Navegar para a tela de finalizar compra
+        Intent intent = new Intent(tela_calcular_frete.this, tela_menu_geral.class);
+        startActivity(intent);
     }
 }
