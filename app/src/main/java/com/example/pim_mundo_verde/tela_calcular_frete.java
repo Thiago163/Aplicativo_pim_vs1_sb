@@ -60,7 +60,7 @@ public class tela_calcular_frete extends AppCompatActivity {
         float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
 
         // Exibe o peso total no campo de texto, formatado com duas casas decimais
-        pesoProdutoEditText.setText(String.format("%.2f", pesoTotal));
+        pesoProdutoEditText.setText(String.format("%.2f kilos", pesoTotal));
 
         // Configura os listeners para os botões
         buscarButton.setOnClickListener(v -> buscarCep());

@@ -118,7 +118,7 @@
                 android:id="@+id/cepDestino"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CEP de Destino [Obrigatório]"
+                android:hint="Avalie a compra 0 à 10 [Obrigatório]"
                 android:inputType="number"
                 android:padding="16dp" />
 
