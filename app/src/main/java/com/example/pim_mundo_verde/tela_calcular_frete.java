@@ -48,10 +48,15 @@ public class tela_calcular_frete extends AppCompatActivity {
         resultadoFrete = findViewById(R.id.resultadoFrete);
         calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Inicializando o botão de calcular frete
 
-        // Recupera a quantidade de produtos passada da tela anterior
+        // Recupera a quantidade de produtos e o valor total da compra passados da tela anterior
+        double valorCompra = getIntent().getDoubleExtra("valorCompra", 0.0);  // Valor default é 0.0
         int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0 se não for passado
 
-        // Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
+        // Exibe o valor total da compra no TextView com id text_valor_compra
+        TextView valorCompraTextView = findViewById(R.id.text_valor_compra);
+        valorCompraTextView.setText(String.format("Valor Total: R$ %.2f", valorCompra));
+
+        // Agora você pode usar a quantidade de produtos, que é igual a 1 kg por produto
         float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
 
         // Exibe o peso total no campo de texto, formatado com duas casas decimais
