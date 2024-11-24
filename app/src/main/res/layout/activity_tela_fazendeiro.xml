@@ -224,7 +224,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#FF0000"
-            android:onClick="deletarPerfil"
+            android:onClick="menu"
             android:text="Deletar Perfil"
             android:textColor="#FFFFFF"
             android:textSize="18sp"

@@ -16,7 +16,6 @@
         android:layout_marginBottom="15dp"
         android:background="@drawable/rounded_image"
         android:clipToOutline="true"
-        android:onClick="inicio"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

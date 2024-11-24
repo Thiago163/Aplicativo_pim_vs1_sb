@@ -49,21 +49,12 @@ public class tela_finalizar_compra extends AppCompatActivity {
     }
 
     public void finalizarCompra(View view) {
-        // Limpar o carrinho
-        Carrinho.getInstance().limparCarrinho();  // Limpa o carrinho após a compra
-
-        // Atualizar o RecyclerView
-        AdapterProduto adapterProduto = (AdapterProduto) recyclerViewRevisao.getAdapter();
-        if (adapterProduto != null) {
-            adapterProduto.notifyDataSetChanged();  // Notifica a mudança na lista
-        }
 
         // Atualizar o total
         atualizarTotal();
 
         // Ação para redirecionar ao menu ou outra tela
         Intent in = new Intent(tela_finalizar_compra.this, tela_calcular_frete.class);
-        in.putExtra("compraFinalizada", true);  // Passando o sinalizador para limpar a tela de carrinho
         startActivity(in);
     }
 
