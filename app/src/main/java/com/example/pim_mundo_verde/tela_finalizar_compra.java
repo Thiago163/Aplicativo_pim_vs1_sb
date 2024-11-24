@@ -64,16 +64,22 @@ public class tela_finalizar_compra extends AppCompatActivity {
         // Atualizar o total
         atualizarTotal();
 
-        // Passa a quantidade de produtos para a tela de calcular frete
+        // Calcular o valor total da compra
+        double total = 0;
+        for (Produto produto : produtosCarrinho) {
+            total += produto.getPrecoAsDouble() * produto.getQuantidade();  // Calculo do total
+        }
+
+        // Passa a quantidade de produtos e o valor total para a tela de calcular frete
         int quantidadeProdutos = 0;
         for (Produto produto : produtosCarrinho) {
             quantidadeProdutos += produto.getQuantidade();  // Conta o total de unidades
-
         }
 
-        // Ação para redirecionar à tela de calcular frete
+        // Cria o Intent para navegar para a tela de calcular frete
         Intent intent = new Intent(tela_finalizar_compra.this, tela_calcular_frete.class);
         intent.putExtra("quantidadeProdutos", quantidadeProdutos);  // Passando a quantidade total de unidades
+        intent.putExtra("valorCompra", total);  // Passando o valor total da compra
         startActivity(intent);
     }
 

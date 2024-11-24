@@ -48,20 +48,23 @@ public class tela_calcular_frete extends AppCompatActivity {
         calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Botão "Calcular frete"
         resultadoFrete = findViewById(R.id.resultadoFrete);
 
-        // Recupera a quantidade de produtos passada da tela anterior
-        int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0 se não for passado
+        // Recupera a quantidade de produtos e o valor da compra passados da tela anterior
+        int quantidadeProdutos = getIntent().getIntExtra("quantidadeProdutos", 0);  // Valor default é 0
+        double valorCompra = getIntent().getDoubleExtra("valorCompra", 0.0);  // Valor default é 0.0
 
-        // Agora, você pode usar a quantidade de produtos, que é igual a 1 kg por produto
-        float pesoTotal = quantidadeProdutos * 1.0f;  // Cada produto equivale a 1 kg, então multiplicamos pela quantidade
+        // Agora você pode usar o valor da compra (valorCompra)
+        // Exemplo de como exibir o valor da compra na tela
+        // Você pode colocar esse valor em algum TextView ou usar em outro lugar conforme necessário
+        Log.d("Valor da Compra", "Total da Compra: R$ " + valorCompra);
 
-        // Exibe o peso total no campo de texto, formatado com duas casas decimais
-        pesoProdutoEditText.setText(String.format("%.2f kilos", pesoTotal));
+        // Agora, você pode usar o valor da compra, que foi passado, em qualquer lugar do código
+        // Exemplo: mostrar o valor da compra em um TextView, se necessário
+        TextView valorCompraTextView = findViewById(R.id.text_valor_compra);
+        valorCompraTextView.setText(String.format("Valor Total: R$ %.2f", valorCompra));
 
         // Configura os listeners para os botões
         buscarButton.setOnClickListener(v -> buscarCep());
         avancarButton.setOnClickListener(v -> avancarParaProximaTela());
-
-        // Ação do botão "Calcular frete"
         calcularFreteButton.setOnClickListener(v -> calcularFrete());
     }
 
@@ -153,7 +156,8 @@ public class tela_calcular_frete extends AppCompatActivity {
         // Verificar se todos os campos estão preenchidos antes de avançar
         verificarCamposPreenchidos();
 
-        if (isFormComplete) {
+        // Verificar se o frete foi calculado
+        if (isFormComplete && resultadoFrete.getText().toString().contains("Valor do frete: R$")) {
             // Limpar o carrinho
             Carrinho.getInstance().limparCarrinho();  // Limpa o carrinho após a compra
 
@@ -162,23 +166,14 @@ public class tela_calcular_frete extends AppCompatActivity {
             in.putExtra("compraFinalizada", true);  // Passa o sinalizador para a próxima tela
             startActivity(in);
         } else {
-            Toast.makeText(this, "Por favor, preencha todos os campos obrigatórios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Por favor, calcule o frete antes de avançar", Toast.LENGTH_SHORT).show();
         }
     }
 
     // Método corrigido para o botão Home (voltar)
     public void home(View view) {
-        try {
-            // Adiciona log para garantir que a navegação foi acionada
-            Log.d("BotaoHome", "Botão Home clicado");
-
             // Navegar para a tela de finalizar compra
-            Intent intent = new Intent(tela_calcular_frete.this, tela_menu_geral.class);
-            startActivity(intent);
-
-            Log.d("BotaoHome", "Intent iniciada com sucesso.");
-        } catch (Exception e) {
-            Log.e("BotaoHome", "Erro ao navegar para a tela de menu: " + e.getMessage());
-        }
+    Intent intent = new Intent(tela_calcular_frete.this, tela_menu_geral.class);
+    startActivity(intent);
     }
 }

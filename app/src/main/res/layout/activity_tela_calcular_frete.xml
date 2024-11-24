@@ -19,9 +19,6 @@
         app:srcCompat="@drawable/frutas" />
 
     <!-- Título -->
-
-    <!-- Botão Voltar -->
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -35,6 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView3" />
 
+    <!-- Botão Voltar -->
     <ImageButton
         android:id="@+id/imageButtonVoltar4"
         android:layout_width="93dp"
@@ -124,59 +122,74 @@
                 android:inputType="number"
                 android:padding="16dp" />
 
-            <!-- Resultado do Frete -->
-            <TextView
-                android:id="@+id/resultadoFrete"
-                android:layout_width="wrap_content"
+            <!-- Resultado do Frete e Preço Compra lado a lado -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Resultado do Frete"
-                android:layout_marginTop="16dp"
-                android:padding="16dp"
-                android:textSize="18sp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <!-- Resultado do Frete -->
+                <TextView
+                    android:id="@+id/resultadoFrete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resultado do Frete"
+                    android:textSize="18sp"
+                    android:paddingEnd="16dp" />
+
+                <!-- Preço compra -->
+                <TextView
+                    android:id="@+id/text_valor_compra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Valor Total: R$ 0.00"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
 
-        <!-- Botões "Buscar" e "Avançar" fixados na parte inferior -->
-        <LinearLayout
-            android:layout_width="match_parent"
+    <!-- Botões "Buscar" e "Avançar" fixados na parte inferior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="start"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Botão Buscar -->
+        <Button
+            android:id="@+id/botaoBuscar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:gravity="start"
-            app:layout_constraintBottom_toBottomOf="parent">
+            android:text="Buscar"
+            android:padding="16dp"
+            android:onClick="buscarFrete"
+            android:layout_marginEnd="6dp" /> <!-- Espaçamento à direita -->
 
-            <!-- Botão Buscar -->
-            <Button
-                android:id="@+id/botaoBuscar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Buscar"
-                android:padding="16dp"
-                android:onClick="buscarFrete"
-                android:layout_marginEnd="6dp" /> <!-- Espaçamento à direita -->
+        <!-- Botão Calcular frete -->
+        <Button
+            android:id="@+id/botaoCalcularFrete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calcular frete"
+            android:padding="16dp"
+            android:onClick="CalcularFrete"
+            android:layout_marginEnd="6dp"/>
 
-            <!-- Botão Calcular frete -->
-            <Button
-                android:id="@+id/botaoCalcularFrete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Calcular frete"
-                android:padding="16dp"
-                android:onClick="CalcularFrete"
-                android:layout_marginEnd="6dp"/>
+        <!-- Botão Avançar -->
+        <Button
+            android:id="@+id/botaoAvancar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Avançar"
+            android:padding="16dp"
+            android:onClick="avancarParaProximaTela" />
+    </LinearLayout>
 
-            <!-- Botão Avançar -->
-            <Button
-                android:id="@+id/botaoAvancar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Avançar"
-                android:padding="16dp"
-                android:onClick="avancarParaProximaTela" />
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
