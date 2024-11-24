@@ -47,4 +47,10 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.code.gson:gson:2.8.8")
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
+
+    // Kotlin coroutines dependency
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Dependência para a biblioteca JSON (org.json)
+    implementation("org.json:json:20210307") // Adiciona a dependência do JSON
 }

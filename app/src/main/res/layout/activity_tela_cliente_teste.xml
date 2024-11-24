@@ -26,27 +26,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/voltar" />
 
+    <!-- Spinner para listar clientes -->
     <TextView
         android:id="@+id/labelClientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Selecione um Cliente"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Spinner para listar clientes -->
+    <!-- Campo ID (somente leitura) -->
     <Spinner
         android:id="@+id/spinnerClientes"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/labelClientes"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelClientes" />
 
-    <!-- Campo ID (somente leitura) -->
     <TextView
         android:id="@+id/labelId"
         android:layout_width="wrap_content"
@@ -56,17 +57,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="4dp" />
 
+    <!-- Campo Nome -->
     <EditText
         android:id="@+id/editTextId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@id/labelId"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelId" />
 
-    <!-- Campo Nome -->
     <TextView
         android:id="@+id/labelNome"
         android:layout_width="wrap_content"
@@ -76,16 +78,18 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="4dp" />
 
+    <!-- Campo Email -->
+
     <EditText
         android:id="@+id/editTextNome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/labelNome"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelNome" />
 
-    <!-- Campo Email -->
     <TextView
         android:id="@+id/labelEmail"
         android:layout_width="wrap_content"
@@ -95,16 +99,17 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginBottom="4dp" />
 
+    <!-- Botão para carregar a lista de clientes -->
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/labelEmail"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelEmail" />
 
-    <!-- Botão para carregar a lista de clientes -->
     <Button
         android:id="@+id/buttonLoadClientes"
         android:layout_width="0dp"
@@ -113,38 +118,44 @@
         app:layout_constraintTop_toBottomOf="@id/editTextEmail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="4dp" />
 
     <!-- Botão para incluir um novo cliente -->
+
+    <!-- Botão para atualizar cliente selecionado -->
+
+    <!-- Botão para deletar cliente selecionado -->
     <Button
         android:id="@+id/buttonAddCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Incluir Cliente"
-        app:layout_constraintTop_toBottomOf="@id/buttonLoadClientes"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonLoadClientes" />
 
-    <!-- Botão para atualizar cliente selecionado -->
     <Button
         android:id="@+id/buttonUpdateCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Atualizar Cliente"
-        app:layout_constraintTop_toBottomOf="@id/buttonAddCliente"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddCliente" />
 
-    <!-- Botão para deletar cliente selecionado -->
     <Button
         android:id="@+id/buttonDeleteCliente"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Deletar Cliente"
-        app:layout_constraintTop_toBottomOf="@id/buttonUpdateCliente"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/buttonUpdateCliente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
