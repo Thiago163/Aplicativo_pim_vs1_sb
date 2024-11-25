@@ -49,8 +49,15 @@ public class tela_agradecimentos_compra extends AppCompatActivity {
     }
 
     public void home(View view) {
+        // Limpar o carrinho
+        Carrinho.getInstance().limparCarrinho();  // Limpa os produtos do carrinho
+
+        // Intent para redirecionar para a tela inicial
         Intent in = new Intent(tela_agradecimentos_compra.this, tela_home.class); // Ajuste para sua tela inicial
         startActivity(in);
-        finish(); // Opcional: fecha a tela atual para evitar voltar
+
+        // Finaliza a tela atual para evitar voltar
+        finish();
     }
+
 }

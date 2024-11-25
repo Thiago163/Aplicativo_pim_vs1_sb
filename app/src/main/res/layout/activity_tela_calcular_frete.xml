@@ -77,7 +77,7 @@
                 android:id="@+id/cepOrigem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="CEP de Origem [Obrigatório]"
+                android:hint="CEP de Destino [Obrigatório]"
                 android:inputType="number"
                 android:padding="16dp" />
 
@@ -115,10 +115,10 @@
                 android:enabled="true" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cepDestino"
+                android:id="@+id/avaliar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Avalie a compra 0 à 10 [Obrigatório]"
+                android:hint="Avalie a compra 0 à 10"
                 android:inputType="number"
                 android:padding="16dp" />
 

@@ -24,7 +24,7 @@ import org.json.JSONObject;
 
 public class tela_calcular_frete extends AppCompatActivity {
 
-    private EditText cepEditText, logradouroEditText, localidadeEditText, bairroEditText, ufEditText, cepDestino;
+    private EditText cepEditText, logradouroEditText, localidadeEditText, bairroEditText, ufEditText, avaliar;
     private Button buscarButton, avancarButton, calcularFreteButton;
     private TextView resultadoFrete;
     private TextInputEditText pesoProdutoEditText; // Campo para exibir o peso do produto
@@ -43,7 +43,7 @@ public class tela_calcular_frete extends AppCompatActivity {
         ufEditText = findViewById(R.id.ufEditText);
         pesoProdutoEditText = findViewById(R.id.pesoProduto);  // Referência para o campo de peso
         buscarButton = findViewById(R.id.botaoBuscar);
-        cepDestino = findViewById(R.id.cepDestino);  // Inicializa o campo cepDestino
+        avaliar = findViewById(R.id.avaliar);  // Inicializa o campo avaliar
         avancarButton = findViewById(R.id.botaoAvancar);
         resultadoFrete = findViewById(R.id.resultadoFrete);
         calcularFreteButton = findViewById(R.id.botaoCalcularFrete); // Inicializando o botão de calcular frete
@@ -141,9 +141,29 @@ public class tela_calcular_frete extends AppCompatActivity {
             String bairro = bairroEditText.getText().toString().trim();
             String localidade = localidadeEditText.getText().toString().trim();
             String uf = ufEditText.getText().toString().trim();
-            float pesoProduto = Float.parseFloat(pesoProdutoEditText.getText().toString().trim());
+
+            // Corrigir o valor do peso do produto, removendo a palavra "kilos"
+            String pesoProdutoText = pesoProdutoEditText.getText().toString().trim();
+            float pesoProduto = 0.0f;
+            try {
+                pesoProduto = Float.parseFloat(pesoProdutoText.replace("kilos", "").trim());  // Remover "kilos" e converter para float
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Erro ao converter peso para número.", Toast.LENGTH_SHORT).show();
+                return; // Retorna em caso de erro na conversão
+            }
+
+            // Recupera o valor total da compra
             double valorCompra = getIntent().getDoubleExtra("valorCompra", 0.0);
-            float valorFrete = Float.parseFloat(resultadoFrete.getText().toString().replace("Valor do frete: R$ ", "").trim());
+
+            // Corrigir a conversão do valor do frete, removendo o prefixo "Valor do frete: R$ "
+            float valorFrete = 0.0f;
+            try {
+                String valorFreteText = resultadoFrete.getText().toString().replace("Valor do frete: R$ ", "").trim();
+                valorFrete = Float.parseFloat(valorFreteText);  // Converte o valor do frete para float
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Erro ao converter o valor do frete.", Toast.LENGTH_SHORT).show();
+                return; // Retorna em caso de erro na conversão
+            }
 
             // Passa os dados para a tela de agradecimento
             Intent intent = new Intent(tela_calcular_frete.this, tela_agradecimentos_compra.class);
@@ -166,17 +186,32 @@ public class tela_calcular_frete extends AppCompatActivity {
         // Verificar se todos os campos obrigatórios estão preenchidos
         verificarCamposPreenchidos();
 
-        String cepDestinoText = cepDestino.getText().toString().trim();
-
-        if (cepDestinoText.isEmpty() || !isFormComplete) {
-            Toast.makeText(this, "Por favor, insira todos os campos", Toast.LENGTH_SHORT).show();
+        if (!isFormComplete) {
+            Toast.makeText(this, "Por favor, insira todos os campos obrigatórios", Toast.LENGTH_SHORT).show();
             return; // Retorna se o campo não estiver preenchido
         }
 
-        // Calcular o valor do frete (pesoProduto * 1.5)
+        // Obter o texto do campo pesoProdutoEditText (que está no formato "X.XX kilos")
         String pesoProdutoText = pesoProdutoEditText.getText().toString().trim();
-        float pesoProduto = pesoProdutoText.isEmpty() ? 0.0f : Float.parseFloat(pesoProdutoText);
 
+        // Verificar se o campo não está vazio e contém a palavra "kilos"
+        if (pesoProdutoText.isEmpty() || !pesoProdutoText.endsWith("kilos")) {
+            Toast.makeText(this, "Por favor, insira um peso válido.", Toast.LENGTH_SHORT).show();
+            return; // Retorna se o campo estiver vazio ou não tiver o formato correto
+        }
+
+        // Remover a palavra "kilos" do texto e tentar converter o restante para float
+        String pesoNumeroText = pesoProdutoText.replace("kilos", "").trim();
+
+        float pesoProduto = 0.0f;
+        try {
+            pesoProduto = Float.parseFloat(pesoNumeroText); // Converte o texto para número
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Erro ao converter peso para número.", Toast.LENGTH_SHORT).show();
+            return; // Retorna em caso de erro na conversão
+        }
+
+        // Calcular o valor do frete (pesoProduto * 1.5)
         float valorFrete = pesoProduto * 1.5f;
 
         // Exibe o resultado do frete
