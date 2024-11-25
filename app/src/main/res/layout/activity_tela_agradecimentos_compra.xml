@@ -1,95 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center"
     tools:context=".tela_agradecimentos_compra">
 
-    <!-- Texto de Agradecimento -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <TextView
         android:id="@+id/text_agradecimento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Obrigado pela sua compra!"
-        android:textSize="24sp"
-        android:textColor="#333333"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-medium"
-        android:textStyle="bold"/>
+        android:text="Obrigado pela sua compra!"
+        android:textColor="#333333"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
-    <!-- Detalhes da compra -->
     <TextView
         android:id="@+id/text_cep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
         android:text="CEP: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_agradecimento" />
 
     <TextView
         android:id="@+id/text_endereco"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Endereço: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_cep"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/text_peso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Peso Total: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_endereco"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/text_valor_compra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Valor da Compra: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_peso"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/text_frete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Valor do Frete: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="12dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_valor_compra"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
     <TextView
         android:id="@+id/text_valor_total"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
         android:text="Valor Total: "
-        android:textSize="16sp"
         android:textColor="#555555"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="sans-serif"/>
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_frete"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
 
-    <!-- Botão de ação (exemplo, como sugestão para uma ação final) -->
+    <!-- Botão de ação -->
     <Button
         android:id="@+id/btn_finalizar_compra"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Concluir compra"
+        android:layout_marginTop="56dp"
         android:onClick="home"
-        android:textSize="18sp"
+        android:padding="12dp"
+        android:text="Concluir compra"
         android:textColor="#ffffff"
-        android:layout_marginTop="20dp"
-        android:padding="12dp"/>
-</LinearLayout>
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_valor_total" />
+</androidx.constraintlayout.widget.ConstraintLayout>
