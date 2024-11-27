@@ -1,10 +1,13 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pim_mundo_verde.R;
+import com.example.pim_mundo_verde.component.Carrinho;
 
 public class tela_agradecimentos_compra extends AppCompatActivity {
 

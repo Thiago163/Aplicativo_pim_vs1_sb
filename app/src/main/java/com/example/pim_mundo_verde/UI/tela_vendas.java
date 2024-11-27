@@ -1,4 +1,4 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.pim_mundo_verde.Adapter.AdapterProduto;
+import com.example.pim_mundo_verde.R;
+import com.example.pim_mundo_verde.component.Carrinho;
 import com.example.pim_mundo_verde.model.Produto;
 
 import java.util.ArrayList;

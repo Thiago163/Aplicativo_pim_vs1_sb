@@ -1,4 +1,4 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pim_mundo_verde.Adapter.AdapterProduto;
+import com.example.pim_mundo_verde.R;
 import com.example.pim_mundo_verde.model.Produto;
-import com.example.pim_mundo_verde.tela_menu_geral;
 
 import java.util.List;
 

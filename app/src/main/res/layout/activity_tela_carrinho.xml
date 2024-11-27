@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_carrinho">
+    tools:context=".UI.tela_carrinho">
 
     <ImageButton
         android:id="@+id/imageButtonVoltar6"

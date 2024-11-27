@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".UI.tela_usuario_geral">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Título da tela -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gerenciamento de Usuários"
+            android:textColor="#2b6cb0"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="20dp" />
+
+        <!-- Spinner para selecionar usuários -->
+        <Spinner
+            android:id="@+id/usuarioList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitulo"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo ID (Somente leitura) -->
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID (Somente leitura)"
+            app:layout_constraintTop_toBottomOf="@id/usuarioList"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioId"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:enabled="false"
+            android:focusable="false"
+            app:layout_constraintTop_toBottomOf="@id/tvId"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Documento -->
+        <TextView
+            android:id="@+id/tvDocumento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Documento"
+            app:layout_constraintTop_toBottomOf="@id/usuarioId"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioDocumento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite o documento (ex: CPF, RG)"
+            app:layout_constraintTop_toBottomOf="@id/tvDocumento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Tipo de Documento -->
+        <TextView
+            android:id="@+id/tvTipoDocumento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tipo de Documento"
+            app:layout_constraintTop_toBottomOf="@id/usuarioDocumento"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:id="@+id/usuarioTipoDocumento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipo_documentos"
+            app:layout_constraintTop_toBottomOf="@id/tvTipoDocumento"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Nome -->
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            app:layout_constraintTop_toBottomOf="@id/usuarioTipoDocumento"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioNome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite o nome"
+            app:layout_constraintTop_toBottomOf="@id/tvNome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            app:layout_constraintTop_toBottomOf="@id/usuarioNome"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite o email"
+            app:layout_constraintTop_toBottomOf="@id/tvEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Telefone -->
+        <TextView
+            android:id="@+id/tvTelefone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefone"
+            app:layout_constraintTop_toBottomOf="@id/usuarioEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioTelefone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite o telefone"
+            app:layout_constraintTop_toBottomOf="@id/tvTelefone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Campo Senha -->
+        <TextView
+            android:id="@+id/tvSenha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senha"
+            app:layout_constraintTop_toBottomOf="@id/usuarioTelefone"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/usuarioSenha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Digite a senha"
+            android:inputType="textPassword"
+            app:layout_constraintTop_toBottomOf="@id/tvSenha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Botões de ações -->
+        <Button
+            android:id="@+id/loadUsuariosButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Carregar Usuários"
+            app:layout_constraintTop_toBottomOf="@id/usuarioSenha"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <Button
+            android:id="@+id/addUsuarioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Adicionar Usuário"
+            app:layout_constraintTop_toBottomOf="@id/loadUsuariosButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <Button
+            android:id="@+id/updateUsuarioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Atualizar Usuário"
+            app:layout_constraintTop_toBottomOf="@id/addUsuarioButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <Button
+            android:id="@+id/deleteUsuarioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Deletar Usuário"
+            app:layout_constraintTop_toBottomOf="@id/updateUsuarioButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <Button
+            android:id="@+id/voltar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Voltar"
+            android:onClick="main"
+            app:layout_constraintTop_toBottomOf="@id/deleteUsuarioButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="32dp" />
+
+        <!-- Mensagem de erro ou sucesso -->
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#ff0000"
+            app:layout_constraintTop_toBottomOf="@id/deleteUsuarioButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

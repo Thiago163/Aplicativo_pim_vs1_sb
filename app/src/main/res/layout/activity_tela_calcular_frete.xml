@@ -5,7 +5,7 @@
     android:id="@+id/tela_calcular_frete"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_calcular_frete">
+    tools:context=".UI.tela_calcular_frete">
 
     <!-- Imagem do cabeçalho -->
     <ImageView
@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:text="Buscar"
             android:padding="16dp"
-            android:onClick="buscarFrete"
+            android:onClick="calcularFrete"
             android:layout_marginEnd="6dp" /> <!-- Espaçamento à direita -->
 
         <!-- Botão Calcular frete -->

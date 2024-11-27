@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_cadastro_uso">
+    tools:context=".UI.tela_cadastro_uso">
 
     <!-- Imagem do cabeçalho -->
     <ImageView

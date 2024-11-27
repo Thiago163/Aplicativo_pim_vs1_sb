@@ -1,0 +1,12 @@
+<resources>
+    <string-array name="empty_list">
+        <item>Selecione um usuário</item>
+    </string-array>
+
+    <!-- Adicione outros arrays necessários, como 'tipo_documentos' -->
+    <string-array name="tipo_documentos">
+        <item>CPF</item>
+        <item>RG</item>
+        <item>Passaporte</item>
+    </string-array>
+</resources>

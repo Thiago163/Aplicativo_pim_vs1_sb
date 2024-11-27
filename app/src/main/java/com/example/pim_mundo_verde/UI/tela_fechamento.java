@@ -1,4 +1,4 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pim_mundo_verde.Adapter.AdapterProduto;
 import com.example.pim_mundo_verde.Adapter.AdpterCampo;
+import com.example.pim_mundo_verde.Campo;
+import com.example.pim_mundo_verde.R;
 import com.example.pim_mundo_verde.model.Produto;  // Corrigido para importar Produto
-import com.example.pim_mundo_verde.Campo;  // Corrigido para importar Campo
 
 import java.util.ArrayList;
 import java.util.List;

@@ -53,4 +53,7 @@ dependencies {
 
     // Dependência para a biblioteca JSON (org.json)
     implementation("org.json:json:20210307") // Adiciona a dependência do JSON
+
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+
 }

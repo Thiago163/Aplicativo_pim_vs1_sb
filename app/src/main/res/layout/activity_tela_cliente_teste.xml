@@ -5,7 +5,7 @@
     android:id="@+id/tela_cliente_teste"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tela_cliente_teste"
+    tools:context=".UI.tela_cliente_teste"
     android:padding="16dp">
 
     <!-- Texto explicativo para o Spinner -->

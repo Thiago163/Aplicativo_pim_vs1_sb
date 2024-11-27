@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".tela_fazendeiro">
+    tools:context=".UI.tela_fazendeiro">
 
     <!-- Container para o layout de conteúdo -->
     <androidx.constraintlayout.widget.ConstraintLayout

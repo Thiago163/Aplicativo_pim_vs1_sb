@@ -1,4 +1,4 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.component;
 
 import com.example.pim_mundo_verde.model.Produto;
 import java.util.ArrayList;

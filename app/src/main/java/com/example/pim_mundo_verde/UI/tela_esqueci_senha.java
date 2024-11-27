@@ -1,4 +1,4 @@
-package com.example.pim_mundo_verde;
+package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,8 @@ import android.widget.Toast;
 import android.util.Patterns;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pim_mundo_verde.R;
 
 public class tela_esqueci_senha extends AppCompatActivity {
 
