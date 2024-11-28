@@ -1,15 +1,15 @@
 package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.graphics.Color;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.pim_mundo_verde.R;
+import com.example.pim_mundo_verde.component.UserDatabase;
 
 import java.util.regex.Pattern;
 
@@ -102,16 +103,28 @@ public class tela_login extends AppCompatActivity {
             return;
         }
 
-        // Verificação do e-mail e senha com os valores padrão
-        if (!email.equals(EMAIL_PADRAO) || !senha.equals(SENHA_PADRAO)) {
+        // Cria uma instância do banco de dados local
+        UserDatabase userDatabase = new UserDatabase(this);
+
+        // Primeiro, verifica se as credenciais correspondem ao padrão
+        if (email.equals(EMAIL_PADRAO) && senha.equals(SENHA_PADRAO)) {
+            // Se a autenticação for bem-sucedida, navega para a tela inicial
+            Intent in = new Intent(tela_login.this, tela_home.class);
+            startActivity(in);
+            finish(); // Finaliza a atividade de login para que não seja possível voltar a ela
+            return;
+        }
+
+        // Caso contrário, verifica no banco de dados
+        if (!userDatabase.checkUser(email, senha)) {
             Toast.makeText(this, "E-mail ou senha inválidos.", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Se a autenticação for bem-sucedida, navega para a tela inicial
+        // Se o login for válido no banco de dados, navega para a tela inicial
         Intent in = new Intent(tela_login.this, tela_home.class);
         startActivity(in);
-        finish(); // Finaliza a atividade de login para que não seja possível voltar a ela
+        finish(); // Finaliza a atividade de login
     }
 
     public void esquecisenha(View view) {

@@ -2,6 +2,7 @@ package com.example.pim_mundo_verde.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -22,54 +23,54 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Classe MainActivity
- *
- * Propósito: A MainActivity serve como interface gráfica para o usuário interagir com a API de Clientes.
- * Ela permite carregar, adicionar, atualizar e deletar clientes, exibindo os dados no Spinner e permitindo
- * a edição dos campos de nome e email.
- *
- * Nota Importante: **A API DEVE ESTAR RODANDO NO ECLIPSE** antes de usar esta aplicação. Caso contrário,
- * os métodos que fazem requisições à API (como carregar, adicionar, atualizar e deletar clientes) irão
- * retornar erro ao tentar conectar-se ao servidor. Verifique se o servidor da API está ativo para evitar
- * erros de conexão.
- */
 public class tela_cliente_teste extends AppCompatActivity {
 
-    private static final String TAG = "NetworkCheck"; // Tag para logs de diagnóstico de rede.
-    private Spinner spinnerClientes; // Dropdown para exibir a lista de clientes.
-    private EditText editTextId, editTextNome, editTextEmail; // Campos de entrada para ID, Nome e Email do cliente.
-    private Button buttonLoadClientes, buttonAddCliente, buttonUpdateCliente, buttonDeleteCliente; // Botões para ações CRUD.
-    private List<Cliente> clientes = new ArrayList<>(); // Lista de objetos Cliente para armazenar dados carregados.
-    private ArrayAdapter<String> adapter; // Adaptador para manipular o Spinner.
+    private static final String TAG = "NetworkCheck"; // Tag para logs de rede
+    private Spinner spinnerClientes;
+    private EditText editTextId, editTextNome, editTextEmail;
+    private Button buttonLoadClientes, buttonAddCliente, buttonUpdateCliente, buttonDeleteCliente;
+    private List<Cliente> clientes = new ArrayList<>();
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_cliente_teste); // Define o layout da atividade.
+        setContentView(R.layout.activity_tela_cliente_teste);
 
-        // Log de diagnóstico de rede para verificar a conexão com o servidor da API.
-        Log.d(TAG, "Verificando configurações de rede...");
+        // Permitir operações de rede no thread principal temporariamente
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        Log.d(TAG, "Verificando conexão com a API...");
+        verificarConexaoAPI();
+
+        inicializarComponentes();
+        configurarSpinner();
+        configurarBotoes();
+    }
+
+    private void verificarConexaoAPI() {
         new Thread(() -> {
             try {
-                URL url = new URL("http://10.0.2.2:8085/api/clientes/listar"); // URL do endpoint da API.
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection(); // Abre conexão HTTP.
-                connection.setRequestMethod("GET"); // Define o método HTTP como GET.
-                connection.connect(); // Conecta ao servidor.
+                URL url = new URL("http://10.0.2.2:8085/api/clientes/listar"); // Use o IP correto
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+                connection.connect();
 
-                int responseCode = connection.getResponseCode(); // Código de resposta da conexão.
-                if (responseCode == 200) {
-                    Log.d(TAG, "Conexão HTTP com 10.0.2.2 bem-sucedida.");
+                int responseCode = connection.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    Log.d(TAG, "Conexão bem-sucedida com a API.");
                 } else {
-                    Log.e(TAG, "Conexão HTTP falhou. Código de resposta: " + responseCode);
+                    Log.e(TAG, "Falha na conexão com a API. Código: " + responseCode);
                 }
-                connection.disconnect(); // Fecha a conexão.
+                connection.disconnect();
             } catch (Exception e) {
-                Log.e(TAG, "Erro ao verificar a conexão HTTP com 10.0.2.2: " + e.getMessage());
+                Log.e(TAG, "Erro ao conectar com a API: " + e.getMessage());
             }
         }).start();
+    }
 
-        // Inicializar views com base nos IDs definidos no layout XML.
+    private void inicializarComponentes() {
         spinnerClientes = findViewById(R.id.spinnerClientes);
         editTextId = findViewById(R.id.editTextId);
         editTextNome = findViewById(R.id.editTextNome);
@@ -78,23 +79,16 @@ public class tela_cliente_teste extends AppCompatActivity {
         buttonAddCliente = findViewById(R.id.buttonAddCliente);
         buttonUpdateCliente = findViewById(R.id.buttonUpdateCliente);
         buttonDeleteCliente = findViewById(R.id.buttonDeleteCliente);
+    }
 
-        // Configuração do Spinner e seu adaptador para exibir os nomes dos clientes.
+    private void configurarSpinner() {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new ArrayList<>());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerClientes.setAdapter(adapter); // Define o adaptador do Spinner.
+        spinnerClientes.setAdapter(adapter);
 
-        // Define ações para os botões.
-        buttonLoadClientes.setOnClickListener(v -> loadClientes()); // Carregar clientes ao clicar no botão.
-        buttonAddCliente.setOnClickListener(v -> addCliente()); // Adicionar cliente ao clicar no botão.
-        buttonUpdateCliente.setOnClickListener(v -> updateCliente()); // Atualizar cliente ao clicar no botão.
-        buttonDeleteCliente.setOnClickListener(v -> deleteCliente()); // Deletar cliente ao clicar no botão.
-
-        // Define ação de seleção do Spinner, para exibir informações do cliente selecionado nos EditTexts.
         spinnerClientes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Obtém o cliente selecionado e exibe os dados nos campos de texto.
                 Cliente cliente = clientes.get(position);
                 editTextId.setText(String.valueOf(cliente.getId()));
                 editTextNome.setText(cliente.getNome());
@@ -103,7 +97,6 @@ public class tela_cliente_teste extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Limpa os campos de texto quando nada está selecionado no Spinner.
                 editTextId.setText("");
                 editTextNome.setText("");
                 editTextEmail.setText("");
@@ -111,99 +104,90 @@ public class tela_cliente_teste extends AppCompatActivity {
         });
     }
 
-    /**
-     * Método loadClientes()
-     * Carrega a lista de clientes chamando o serviço da API. Atualiza o Spinner com os nomes dos clientes.
-     */
+    private void configurarBotoes() {
+        buttonLoadClientes.setOnClickListener(v -> loadClientes());
+        buttonAddCliente.setOnClickListener(v -> addCliente());
+        buttonUpdateCliente.setOnClickListener(v -> updateCliente());
+        buttonDeleteCliente.setOnClickListener(v -> deleteCliente());
+    }
+
     private void loadClientes() {
         new Thread(() -> {
             try {
-                clientes = ClienteApiService.getAllClientes(); // Chama o serviço da API para obter todos os clientes.
+                clientes = ClienteApiService.getAllClientes();
                 runOnUiThread(() -> {
-                    adapter.clear(); // Limpa os dados do adaptador.
+                    adapter.clear();
                     for (Cliente cliente : clientes) {
-                        adapter.add(cliente.getNome()); // Adiciona o nome de cada cliente ao adaptador.
+                        adapter.add(cliente.getNome());
                     }
-                    adapter.notifyDataSetChanged(); // Notifica o Spinner sobre as mudanças.
-                    Toast.makeText(tela_cliente_teste.this, "Clientes carregados", Toast.LENGTH_SHORT).show(); // Mensagem de sucesso.
-                });
-            } catch (Exception e) {
-                e.printStackTrace(); // Exibe erro no console.
-                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao carregar clientes", Toast.LENGTH_SHORT).show()); // Mensagem de erro.
-            }
-        }).start();
-    }
-
-    /**
-     * Método addCliente()
-     * Adiciona um novo cliente chamando o serviço da API. Exibe uma mensagem de sucesso ou erro.
-     */
-    private void addCliente() {
-        Cliente cliente = new Cliente(); // Cria um novo cliente.
-        cliente.setNome(editTextNome.getText().toString()); // Define o nome a partir do campo de texto.
-        cliente.setEmail(editTextEmail.getText().toString()); // Define o email a partir do campo de texto.
-
-        new Thread(() -> {
-            try {
-                String response = ClienteApiService.addCliente(cliente); // Chama o serviço para adicionar o cliente.
-                runOnUiThread(() -> {
-                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show(); // Mensagem de sucesso.
-                    loadClientes(); // Atualiza a lista de clientes.
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(tela_cliente_teste.this, "Clientes carregados", Toast.LENGTH_SHORT).show();
                 });
             } catch (Exception e) {
                 e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao adicionar cliente", Toast.LENGTH_SHORT).show()); // Mensagem de erro.
+                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao carregar clientes", Toast.LENGTH_SHORT).show());
             }
         }).start();
     }
 
-    /**
-     * Método updateCliente()
-     * Atualiza o cliente selecionado chamando o serviço da API. Exibe uma mensagem de sucesso ou erro.
-     */
-    private void updateCliente() {
-        long id = Long.parseLong(editTextId.getText().toString()); // Obtém o ID do cliente a ser atualizado.
-        Cliente cliente = new Cliente(); // Cria um novo cliente com dados atualizados.
+    private void addCliente() {
+        Cliente cliente = new Cliente();
         cliente.setNome(editTextNome.getText().toString());
         cliente.setEmail(editTextEmail.getText().toString());
 
         new Thread(() -> {
             try {
-                String response = ClienteApiService.updateCliente(id, cliente); // Chama o serviço para atualizar o cliente.
+                String response = ClienteApiService.addCliente(cliente);
                 runOnUiThread(() -> {
-                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show(); // Mensagem de sucesso.
-                    loadClientes(); // Atualiza a lista de clientes.
+                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show();
+                    loadClientes();
                 });
             } catch (Exception e) {
                 e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao atualizar cliente", Toast.LENGTH_SHORT).show()); // Mensagem de erro.
+                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao adicionar cliente", Toast.LENGTH_SHORT).show());
             }
         }).start();
     }
 
-    /**
-     * Método deleteCliente()
-     * Deleta o cliente selecionado chamando o serviço da API. Exibe uma mensagem de sucesso ou erro.
-     */
-    private void deleteCliente() {
-        long id = Long.parseLong(editTextId.getText().toString()); // Obtém o ID do cliente a ser deletado.
+    private void updateCliente() {
+        long id = Long.parseLong(editTextId.getText().toString());
+        Cliente cliente = new Cliente();
+        cliente.setNome(editTextNome.getText().toString());
+        cliente.setEmail(editTextEmail.getText().toString());
 
         new Thread(() -> {
             try {
-                String response = ClienteApiService.deleteCliente(id); // Chama o serviço para deletar o cliente.
+                String response = ClienteApiService.updateCliente(id, cliente);
                 runOnUiThread(() -> {
-                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show(); // Mensagem de sucesso.
-                    loadClientes(); // Atualiza a lista de clientes.
+                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show();
+                    loadClientes();
                 });
             } catch (Exception e) {
                 e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao deletar cliente", Toast.LENGTH_SHORT).show()); // Mensagem de erro.
+                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao atualizar cliente", Toast.LENGTH_SHORT).show());
+            }
+        }).start();
+    }
+
+    private void deleteCliente() {
+        long id = Long.parseLong(editTextId.getText().toString());
+
+        new Thread(() -> {
+            try {
+                String response = ClienteApiService.deleteCliente(id);
+                runOnUiThread(() -> {
+                    Toast.makeText(tela_cliente_teste.this, response, Toast.LENGTH_SHORT).show();
+                    loadClientes();
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                runOnUiThread(() -> Toast.makeText(tela_cliente_teste.this, "Erro ao deletar cliente", Toast.LENGTH_SHORT).show());
             }
         }).start();
     }
 
     public void Main(View view) {
-        Intent in = new Intent(tela_cliente_teste.this, MainActivity.class); // Use o nome correto da classe
+        Intent in = new Intent(tela_cliente_teste.this, MainActivity.class);
         startActivity(in);
     }
 }

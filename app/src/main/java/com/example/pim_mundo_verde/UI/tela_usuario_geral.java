@@ -23,7 +23,7 @@ public class tela_usuario_geral extends AppCompatActivity {
 
     private Spinner usuarioList, usuarioTipoDocumento;
     private EditText usuarioId, usuarioDocumento, usuarioNome, usuarioEmail, usuarioTelefone, usuarioSenha;
-    private Button loadUsuariosButton, addUsuarioButton, updateUsuarioButton, deleteUsuarioButton;
+    private Button loadUsuariosButton, addUsuarioButton, updateUsuarioButton, deleteUsuarioButton, voltarButton;
     private TextView message;
 
     private UsuarioApiService usuarioApiService = new UsuarioApiService();
@@ -46,12 +46,15 @@ public class tela_usuario_geral extends AppCompatActivity {
         addUsuarioButton = findViewById(R.id.addUsuarioButton);
         updateUsuarioButton = findViewById(R.id.updateUsuarioButton);
         deleteUsuarioButton = findViewById(R.id.deleteUsuarioButton);
+        voltarButton = findViewById(R.id.voltar);
         message = findViewById(R.id.message);
 
+        // Configura os eventos de clique dos botões
         loadUsuariosButton.setOnClickListener(v -> loadUsuarios());
         addUsuarioButton.setOnClickListener(v -> addUsuario());
         updateUsuarioButton.setOnClickListener(v -> updateUsuario());
         deleteUsuarioButton.setOnClickListener(v -> deleteUsuario());
+        voltarButton.setOnClickListener(v -> main(v));
     }
 
     private void loadUsuarios() {
@@ -83,7 +86,7 @@ public class tela_usuario_geral extends AppCompatActivity {
             @Override
             public void onFailure(String error) {
                 // Exibir a mensagem de erro
-                message.setText(error);
+                message.setText("Erro ao carregar usuários: " + error);
                 message.setVisibility(View.VISIBLE);
                 Toast.makeText(tela_usuario_geral.this, "Erro ao carregar os usuários: " + error, Toast.LENGTH_SHORT).show();
             }
@@ -124,6 +127,7 @@ public class tela_usuario_geral extends AppCompatActivity {
             public void onFailure(String error) {
                 message.setText("Erro ao adicionar usuário: " + error);
                 message.setVisibility(View.VISIBLE);
+                Toast.makeText(tela_usuario_geral.this, "Erro ao adicionar o usuário: " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -157,6 +161,7 @@ public class tela_usuario_geral extends AppCompatActivity {
             public void onFailure(String error) {
                 message.setText("Erro ao atualizar usuário: " + error);
                 message.setVisibility(View.VISIBLE);
+                Toast.makeText(tela_usuario_geral.this, "Erro ao atualizar o usuário: " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -182,6 +187,7 @@ public class tela_usuario_geral extends AppCompatActivity {
             public void onFailure(String error) {
                 message.setText("Erro ao deletar usuário: " + error);
                 message.setVisibility(View.VISIBLE);
+                Toast.makeText(tela_usuario_geral.this, "Erro ao deletar o usuário: " + error, Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -3,7 +3,7 @@ package com.example.pim_mundo_verde.model;
 import java.util.Objects;
 
 public class Usuario {
-    private long idUsuario;        // ID do usuário
+    private Long idUsuario;        // ID do usuário (alterado para Long para suportar null)
     private String documento;      // Documento (CPF, RG, etc.)
     private String tipoDocumento;  // Tipo do documento
     private String nome;           // Nome do usuário
@@ -16,7 +16,7 @@ public class Usuario {
     }
 
     // Construtor completo
-    public Usuario(long idUsuario, String documento, String tipoDocumento, String nome, String email, String telefone, String senha) {
+    public Usuario(Long idUsuario, String documento, String tipoDocumento, String nome, String email, String telefone, String senha) {
         this.idUsuario = idUsuario;
         this.documento = documento;
         this.tipoDocumento = tipoDocumento;
@@ -27,11 +27,11 @@ public class Usuario {
     }
 
     // Getters e Setters
-    public long getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -64,8 +64,8 @@ public class Usuario {
     }
 
     public void setEmail(String email) {
-        // Exemplo de validação do formato do e-mail
-        if (email != null && email.contains("@")) {
+        // Validação simples de e-mail
+        if (email != null && email.contains("@") && email.contains(".")) {
             this.email = email;
         } else {
             throw new IllegalArgumentException("E-mail inválido");
@@ -77,7 +77,12 @@ public class Usuario {
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        // Validação do formato do telefone (pode ser ajustada conforme o formato desejado)
+        if (telefone != null && telefone.matches("\\(\\d{2}\\) \\d{4,5}-\\d{4}")) {
+            this.telefone = telefone;
+        } else {
+            throw new IllegalArgumentException("Telefone inválido. Exemplo: (11) 98765-4321");
+        }
     }
 
     public String getSenha() {
@@ -85,11 +90,15 @@ public class Usuario {
     }
 
     public void setSenha(String senha) {
-        // A senha pode ser validada ou criptografada, se necessário
-        this.senha = senha;
+        // Validação ou criptografia da senha pode ser feita aqui
+        if (senha != null && senha.length() >= 6) {  // Exemplo de validação simples
+            this.senha = senha;
+        } else {
+            throw new IllegalArgumentException("A senha deve ter pelo menos 6 caracteres");
+        }
     }
 
-    // Método toString() para visualização
+    // Método toString() para visualização (sem a senha por segurança)
     @Override
     public String toString() {
         return "Usuario{" +
@@ -100,7 +109,7 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
                 '}';
-        // Senha omitida por segurança
+        // Senha não é exibida por questões de segurança
     }
 
     // hashCode e equals para comparação e integridade dos objetos
@@ -109,7 +118,7 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return idUsuario == usuario.idUsuario &&
+        return Objects.equals(idUsuario, usuario.idUsuario) &&
                 Objects.equals(documento, usuario.documento) &&
                 Objects.equals(tipoDocumento, usuario.tipoDocumento) &&
                 Objects.equals(nome, usuario.nome) &&
